@@ -30,7 +30,6 @@ List the ready features here:
 - Shop mechanism
 - Character house, bed
 - Plot characters
-- Cutting down trees
 
 ## Screenshots
 (поменять потом!!)
