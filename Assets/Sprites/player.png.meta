@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_0
+      name: blink_0
       rect:
         serializedVersion: 2
         x: 0
@@ -132,7 +132,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_1
+      name: blink_1
       rect:
         serializedVersion: 2
         x: 24
@@ -154,7 +154,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_2
+      name: blink_2
       rect:
         serializedVersion: 2
         x: 48
@@ -176,7 +176,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_3
+      name: blink_3
       rect:
         serializedVersion: 2
         x: 71
@@ -211,10 +211,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      player_0: -277800217
-      player_1: -1893771744
-      player_2: 1756020698
-      player_3: -1614730429
+      blink_0: -277800217
+      blink_1: -1893771744
+      blink_2: 1756020698
+      blink_3: -1614730429
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
