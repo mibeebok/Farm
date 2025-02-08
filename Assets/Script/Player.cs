@@ -13,6 +13,10 @@ public class Player : MonoBehaviour
     private float minMovingSpeed=0.1f;
 
     private bool isWolk = false;
+    private bool isWolkLeft = false;
+    private bool isWolkStraight = false;
+    private bool isWolkBack = false;
+    
     private bool isRunning = false;
 
     private void Awake () { //запускается до функции Start (инициализация)
@@ -25,18 +29,34 @@ public class Player : MonoBehaviour
         
         if(Input.GetKey(KeyCode.W)){
             InputVector.y = 1f; //положительное значение при нажатии на W по оси y
+            isWolkBack = true;
+        }
+        else{
+            isWolkBack = false;
         }
 
         if(Input.GetKey(KeyCode.S)){
             InputVector.y = -1f;
+            isWolkStraight = true;
+        }
+        else{
+            isWolkStraight = false;
         }
 
         if(Input.GetKey(KeyCode.A)){
             InputVector.x = -1f;
+            isWolkLeft = true;
+        }
+        else{
+            isWolkLeft = false;
         }
 
         if(Input.GetKey(KeyCode.D)){
             InputVector.x = 1f;
+            isWolk = true;
+        }
+        else{
+            isWolk = false;
         }
 
         InputVector = InputVector.normalized;
@@ -50,14 +70,23 @@ public class Player : MonoBehaviour
         }
 
         //проверка для анимации на ходьбу
-        if (Mathf.Abs(InputVector.x)> minMovingSpeed || Mathf.Abs(InputVector.y)>minMovingSpeed){
+       /* if (Mathf.Abs(InputVector.x)> minMovingSpeed || Mathf.Abs(InputVector.y)>minMovingSpeed){
             isWolk = true;
         }else{
             isWolk = false;
-        }
+        }*/
 
     }
     public bool IsWolk() {
         return isWolk;
+    }
+    public bool IsWolkLeft() {
+        return isWolkLeft;
+    }
+    public bool IsWolkStraight() {
+        return isWolkStraight;
+    }
+    public bool IsWolkBack() {
+        return isWolkBack;
     }
 }
