@@ -8,6 +8,7 @@ public class PlayerVisual:MonoBehaviour
     private const string IS_WOLK_LEFT = "IsWolkLeft";
     private const string IS_WOLK_STRAIGHT = "IsWolkStraight";
     private const string IS_WOLK_BACK = "IsWolkBack";
+    private const string IS_RUNNING = "IsRunning";
 
     private void Awake() {
         animator = GetComponent<Animator>();
@@ -19,5 +20,13 @@ public class PlayerVisual:MonoBehaviour
         animator.SetBool (IS_WOLK_LEFT, Player.Instance.IsWolkLeft());
         animator.SetBool (IS_WOLK_STRAIGHT, Player.Instance.IsWolkStraight());
         animator.SetBool (IS_WOLK_BACK, Player.Instance.IsWolkBack());
+        animator.SetBool (IS_RUNNING, Player.Instance.IsRunning());
+
+        if (Player.Instance.IsRunning()){
+            animator.speed = 1.5f;
+        }
+        else{
+            animator.speed = 1f;
+        }
     }
 }

@@ -89,4 +89,7 @@ public class Player : MonoBehaviour
     public bool IsWolkBack() {
         return isWolkBack;
     }
+    public bool IsRunning() {
+        return isRunning;
+    }
 }
