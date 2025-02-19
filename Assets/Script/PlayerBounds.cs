@@ -2,24 +2,31 @@ using UnityEngine;
 
 public class PlayerBounds : MonoBehaviour
 {
- public SpriteRenderer mapRenderer; // Спрайт карты
+    public Transform mapTransform; // Transform карты
+    public Vector2 mapSize; // Размеры карты вручную (ширина и высота)
+
     private Vector2 minBounds;
     private Vector2 maxBounds;
 
     private void Start()
     {
-        if (mapRenderer != null)
+        CalculateBounds();
+    }
+
+    private void CalculateBounds()
+    {
+        if (mapTransform != null)
         {
-            // Получаем размеры карты
-            float mapWidth = mapRenderer.bounds.size.x;
-            float mapHeight = mapRenderer.bounds.size.y;
-
             // Получаем позицию центра карты
-            Vector3 mapCenter = mapRenderer.transform.position;
+            Vector3 mapCenter = mapTransform.position;
 
-            // Рассчитываем границы
-            minBounds = new Vector2(mapCenter.x - mapWidth / 2, mapCenter.y - mapHeight / 2);
-            maxBounds = new Vector2(mapCenter.x + mapWidth / 2, mapCenter.y + mapHeight / 2);
+            // Рассчитываем границы на основе заданных размеров
+            minBounds = new Vector2(mapCenter.x - mapSize.x / 2, mapCenter.y - mapSize.y / 2);
+            maxBounds = new Vector2(mapCenter.x + mapSize.x / 2, mapCenter.y + mapSize.y / 2);
+        }
+        else
+        {
+            Debug.LogError("mapTransform не назначен!");
         }
     }
 
@@ -30,5 +37,4 @@ public class PlayerBounds : MonoBehaviour
         currentPosition.y = Mathf.Clamp(currentPosition.y, minBounds.y, maxBounds.y);
         transform.position = currentPosition;
     }
-    
 }
