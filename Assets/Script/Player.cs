@@ -19,9 +19,22 @@ public class Player : MonoBehaviour
     
     private bool isRunning = false;
 
+    public FarmGrid farmGrid; // Ссылка на карту
+    private Vector2 gridBounds; // Границы карты
+
     private void Awake () { //запускается до функции Start (инициализация)
         Instance = this;
         rb = GetComponent<Rigidbody2D>();
+
+         // Получаем границы карты
+        if (farmGrid != null)
+        {
+            gridBounds = farmGrid.GetGridBounds();
+        }
+        else
+        {
+            Debug.LogError("FarmGrid не назначен!");
+        }
     }
 
     private void FixedUpdate () { // запускается через равные промежутки времени для всех пользователей
@@ -58,16 +71,28 @@ public class Player : MonoBehaviour
         else{
             isWolk = false;
         }
-
+        
         InputVector = InputVector.normalized;
 
         if (Input.GetKey(KeyCode.LeftShift)){
-        rb.MovePosition(rb.position + InputVector * (movingSpeed * Time.fixedDeltaTime) * 2); //ускорение
-        isRunning = true;
+            rb.MovePosition(rb.position + InputVector * (movingSpeed * Time.fixedDeltaTime) * 2); //ускорение
+            isRunning = true;
         }else{
-        rb.MovePosition(rb.position + InputVector * (movingSpeed * Time.fixedDeltaTime)); //начальная позиция + inputVector * зафиксированное ускорение * умноженное количество времени
-        isRunning = false;
+            rb.MovePosition(rb.position + InputVector * (movingSpeed * Time.fixedDeltaTime)); //начальная позиция + inputVector * зафиксированное ускорение * умноженное количество времени
+            isRunning = false;
         }
+
+        // Вычисляем новую позицию с учетом ускорения
+        float speedMultiplier = isRunning ? 2 : 1; // Ускорение в 2 раза при беге
+        Vector2 newPosition = rb.position + InputVector * (movingSpeed * Time.fixedDeltaTime) * speedMultiplier;
+
+        // Ограничиваем позицию игрока границами карты
+        newPosition.x = Mathf.Clamp(newPosition.x, -gridBounds.x, gridBounds.x);
+        newPosition.y = Mathf.Clamp(newPosition.y, -gridBounds.y, gridBounds.y);
+
+        // Применяем новую позицию
+        rb.MovePosition(newPosition);
+
 
         //проверка для анимации на ходьбу
        /* if (Mathf.Abs(InputVector.x)> minMovingSpeed || Mathf.Abs(InputVector.y)>minMovingSpeed){
