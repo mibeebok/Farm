@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FarmGrid : MonoBehaviour
 {
-    public int gridSizeX = 10; // Ширина карты в блоках
+    public int gridSizeX = 100; // Ширина карты в блоках
     public int gridSizeY = 100; // Высота карты в блоках
     public float cellSize = 1f; // Размер одного блока
     public GameObject tilePrefab; // Префаб блока (квадрат или спрайт)
