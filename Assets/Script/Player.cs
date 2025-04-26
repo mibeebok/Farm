@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private float movingSpeed = 5f;
     private Rigidbody2D rb;
 
-    private float minMovingSpeed=0.1f;
+     private bool isMovementBlocked = false;
 
     private bool isWolk = false;
     private bool isWolkLeft = false;
@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
     }
 
     private void FixedUpdate () { // запускается через равные промежутки времени для всех пользователей
+       if(isMovementBlocked) return;
+       
         Vector2 InputVector = new Vector2(0, 0);
         
         if(Input.GetKey(KeyCode.W)){
@@ -116,5 +118,14 @@ public class Player : MonoBehaviour
     }
     public bool IsRunning() {
         return isRunning;
+    }
+
+    public void SetMovementBlocked(bool bloced){
+        isMovementBlocked = bloced;
+
+        if (isMovementBlocked){
+        isWolk = isWolkLeft = isWolkStraight = isWolkBack = isRunning = false;
+        return;
+    }
     }
 }
