@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 231c80c4b77b59c40b124bee96065551
+guid: 3d23cf9dd7dcca648b8b71ba94a53741
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,89 +110,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rigth (1)_0
-      rect:
-        serializedVersion: 2
-        x: 5
-        y: 34
-        width: 21
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5d2103f7471edfcb0800000000000000
-      internalID: -4828455335004990763
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rigth (1)_1
+      name: menu_0
       rect:
         serializedVersion: 2
         x: 38
-        y: 33
-        width: 21
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 16
+        width: 162
+        height: 122
+      alignment: 9
+      pivot: {x: 0.49878642, y: 0.5110959}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4a4c67d03dbd8f880800000000000000
-      internalID: -8576863790816639836
+      spriteID: ab971f673d0b3424ab3e4d839c07b9db
+      internalID: -591665054
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rigth (1)_2
+      name: menu_1
       rect:
         serializedVersion: 2
-        x: 6
-        y: 2
-        width: 21
-        height: 30
+        x: 55
+        y: 103
+        width: 129
+        height: 18
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: afbb3fc0cab760e20800000000000000
-      internalID: 3316474154486840314
+      spriteID: f50e8a28098b8a04e9789071b996acd7
+      internalID: 849632702
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rigth (1)_3
+      name: menu_2
       rect:
         serializedVersion: 2
-        x: 37
-        y: 2
-        width: 21
-        height: 30
+        x: 55
+        y: 79
+        width: 129
+        height: 19
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 04fcb17dfe2a7c090800000000000000
-      internalID: -8014257860892700864
+      spriteID: 52df181a6a050944d823012a327413d6
+      internalID: -1763612355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_3
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 55
+        width: 128
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baca9e620de380144a2e30ba7588f9f3
+      internalID: -1514676932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_4
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 32
+        width: 129
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c4e6d99499341045824eb95e2df8181
+      internalID: -2132211670
       vertices: []
       indices: 
       edges: []
@@ -211,10 +233,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      rigth (1)_0: -4828455335004990763
-      rigth (1)_1: -8576863790816639836
-      rigth (1)_2: 3316474154486840314
-      rigth (1)_3: -8014257860892700864
+      menu_0: -591665054
+      menu_1: 849632702
+      menu_2: -1763612355
+      menu_3: -1514676932
+      menu_4: -2132211670
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

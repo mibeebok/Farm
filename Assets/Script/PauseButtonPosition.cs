@@ -26,7 +26,7 @@ public class PauseButtonPosition : MonoBehaviour
         Vector3 worldPos = uiCamera.ViewportToWorldPoint(viewportPos);
         
         // Конвертируем пиксельные отступы в мировые единицы
-        float ppu = 100f; // Пикселей на единицу (подберите под ваш проект)
+        float ppu = 100f; // Пикселей на единицу
         Vector3 offset = new Vector3(pixelOffsetX/ppu, pixelOffsetY/ppu, 0);
         
         transform.position = worldPos + offset;
