@@ -113,12 +113,12 @@ TextureImporter:
       name: inventar_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 6
         y: 5
-        width: 248
+        width: 247
         height: 133
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -127,6 +127,710 @@ TextureImporter:
       bones: []
       spriteID: ce06549769fd0f64f9ad1d94101d8a0f
       internalID: -1234854568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_1
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 101
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5735214c57975334387057a9bcf6ba7f
+      internalID: 2038170624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_2
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 101
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6ed39d7e7cb56548b8c8c3cad5ed6ce
+      internalID: 2145710110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_3
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 100
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eab3ba9762c16224fbad6b334888aede
+      internalID: 86567751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_4
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 100
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8971ef206b4cd86439fd018905abee9c
+      internalID: -1200413903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_5
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 101
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85c278fe77a2cd645858664146604202
+      internalID: -1139819158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_6
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 101
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dcb2556bb0f8bd439f0e04793d58903
+      internalID: -246490957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_7
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 102
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0df09c700e79b047b1b4ce75f09c7aa
+      internalID: 1218143104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_8
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 101
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c9752a606ce7744490bd38cb8f2df2a
+      internalID: 1862765576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_9
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 73
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c343fb53b1ac4a24a94e41fbd1a2072a
+      internalID: -1209515040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_10
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 72
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ea6ea574c5c93c4c91e91407090ad24
+      internalID: 1325315614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_11
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 73
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e9c0e8538e35d94095f762590a250d7
+      internalID: -62194910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_12
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 71
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28bd89fe0231d1140899c95ed32b1637
+      internalID: 210745207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_13
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 71
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d32d8c75e05ef8e489b923726b3196ed
+      internalID: -656224735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_14
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 72
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d2fbcaa7c715da478980aceeeafb83f
+      internalID: -1670776687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_15
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 73
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fadb55a97dbcdb468b2e31ae1a027a1
+      internalID: -467584812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_16
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 72
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bf1266123957684bb9a0ac02a4f3c35
+      internalID: 951211471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_17
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 42
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81830118568399243ba48ce1eeeab1ac
+      internalID: -1714594836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_18
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 45
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b17bed4771392b443950681a3bfed597
+      internalID: -1857721780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_19
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 43
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1dc070ccba3e7949852698ec218d836
+      internalID: 1856976575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_20
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 44
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 829f6ade15ebbbc40ad8c4a2472b5391
+      internalID: 1192740757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_21
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 43
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 051cec2e84270294d965cd3cd0773a88
+      internalID: -1983908052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_22
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 43
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060dc45298d6cd544969f323e21e11d7
+      internalID: 179425507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_23
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 42
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcf120db1c6adae44bd0b02678e4703d
+      internalID: -1347097077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_24
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 43
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a938075ade03f634b9de63c766563cfc
+      internalID: 1590969454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_25
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 15
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1b67dc8bf8bd334e884123dc6857787
+      internalID: 1679434637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_26
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 15
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfbe8fa7324b469408fea421a6383be3
+      internalID: 1980998294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_27
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 14
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ef558f3a0a4e7345beb8dbc8cff065b
+      internalID: 1067175433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_28
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 14
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 191b78f69ada63147bae80239c11eaab
+      internalID: 1309435006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_29
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 14
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78fa601a74a23694ebcb8363ef81ea76
+      internalID: 841381460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_30
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 14
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f92732ef8e51e214aa92c77471362964
+      internalID: -1751224954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_31
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 14
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b9ac1e11f9628a4588dd360b8b7e063
+      internalID: 1329456078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventar_32
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 14
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c592e6b8986a37f4e8b2f1a8de1fb16e
+      internalID: 326434382
       vertices: []
       indices: 
       edges: []
@@ -146,6 +850,45 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       inventar_0: -1234854568
+      inventar_1: 2038170624
+      inventar_10: 1325315614
+      inventar_11: -62194910
+      inventar_12: 210745207
+      inventar_13: -656224735
+      inventar_14: -1670776687
+      inventar_15: -467584812
+      inventar_16: 951211471
+      inventar_17: -1714594836
+      inventar_18: -1857721780
+      inventar_19: 1856976575
+      inventar_2: 2145710110
+      inventar_20: 1192740757
+      inventar_21: -1983908052
+      inventar_22: 179425507
+      inventar_23: -1347097077
+      inventar_24: 1590969454
+      inventar_25: 1679434637
+      inventar_26: 1980998294
+      inventar_27: 1067175433
+      inventar_28: 1309435006
+      inventar_29: 841381460
+      inventar_3: 86567751
+      inventar_30: -1751224954
+      inventar_31: 1329456078
+      inventar_32: 326434382
+      inventar_33: -313209409
+      inventar_34: 1047797482
+      inventar_35: 1664985381
+      inventar_36: -618908154
+      inventar_37: 1980634231
+      inventar_38: -1841410665
+      inventar_39: -2077589488
+      inventar_4: -1200413903
+      inventar_5: -1139819158
+      inventar_6: -246490957
+      inventar_7: 1218143104
+      inventar_8: 1862765576
+      inventar_9: -1209515040
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

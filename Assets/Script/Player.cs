@@ -39,6 +39,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate () { // запускается через равные промежутки времени для всех пользователей
        if(isMovementBlocked) return;
+
+       if (Time.timeScale == 0) return;
        
         Vector2 InputVector = new Vector2(0, 0);
         
