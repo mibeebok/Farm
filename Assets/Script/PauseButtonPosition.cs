@@ -109,6 +109,21 @@ public class PauseButtonPosition : MonoBehaviour
         }
     }
 
+    public void ResumeGame()
+{
+    //  Через ToggleMenu (если меню активно)
+    if (menu != null && menu.activeSelf)
+    {
+        ToggleMenu();
+        return;
+    }
+
+    //  Принудительное продолжение
+    if (shadow != null) shadow.SetActive(false);
+    Time.timeScale = 1f;
+    Debug.Log("Игра продолжена через ResumeGame()");
+}
+
 void CreateDarkBackground() 
 {
     shadow = new GameObject("Shadow");
@@ -153,25 +168,26 @@ void CreateDarkBackground()
     }
 
     void UpdateDarkBackgroundSize() 
-{
-    if (shadow == null || uiCamera == null) return;
-    
-    // Получаем размеры камеры в мировых координатах
-    float height = 2f * uiCamera.orthographicSize;
-    float width = height * uiCamera.aspect;
-    
-    // Масштабируем спрайт
-    SpriteRenderer sr = shadow.GetComponent<SpriteRenderer>();
-    if (sr != null && sr.sprite != null)
     {
-        // Рассчитываем нужный масштаб
-        float scaleX = width / sr.sprite.bounds.size.x;
-        float scaleY = height / sr.sprite.bounds.size.y;
+        if (shadow == null || uiCamera == null) return;
         
-        shadow.transform.localScale = new Vector3(scaleX, scaleY, 1f);
+        // Получаем размеры камеры в мировых координатах
+        float height = 2f * uiCamera.orthographicSize;
+        float width = height * uiCamera.aspect;
+        
+        // Масштабируем спрайт
+        SpriteRenderer sr = shadow.GetComponent<SpriteRenderer>();
+        if (sr != null && sr.sprite != null)
+        {
+            // Рассчитываем нужный масштаб
+            float scaleX = width / sr.sprite.bounds.size.x;
+            float scaleY = height / sr.sprite.bounds.size.y;
+            
+            shadow.transform.localScale = new Vector3(scaleX, scaleY, 1f);
+        }
+        
+        // Позиционируем перед камерой
+        shadow.transform.position = uiCamera.transform.position + uiCamera.transform.forward * 10f;
     }
-    
-    // Позиционируем перед камерой
-    shadow.transform.position = uiCamera.transform.position + uiCamera.transform.forward * 10f;
-}
+   
 }
