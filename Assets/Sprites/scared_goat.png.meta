@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4221c9c63a2235e408086cc95c077756
+guid: a06c38f26bd21064d8f0cced71647d60
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: house_open_0
+      name: scared_goat_0
       rect:
         serializedVersion: 2
-        x: 54
-        y: 542
-        width: 150
-        height: 192
+        x: 16
+        y: 82
+        width: 34
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +125,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a76cacf539db40458cc9cd6496ab996
-      internalID: -21648061
+      spriteID: 7f0ac9b716981e045a54f64a82fdbf36
+      internalID: 2009878707
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: house_open_1
+      name: scared_goat_1
       rect:
         serializedVersion: 2
-        x: 310
-        y: 542
-        width: 150
-        height: 192
+        x: 81
+        y: 81
+        width: 33
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e46565ea6db60c489f24f576522d860
-      internalID: -1732056272
+      spriteID: 46cae4ec3e13fda43a097de3adaeae62
+      internalID: -1761380526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: house_open_2
+      name: scared_goat_2
       rect:
         serializedVersion: 2
-        x: 566
-        y: 542
-        width: 150
-        height: 192
+        x: 15
+        y: 17
+        width: 35
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2ca18bc532f9d449a4034f48c87e6f0
-      internalID: 2001787241
+      spriteID: 85f3bc90fc2deb041a3fa1884f1de514
+      internalID: 1883773590
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: house_open_3
+      name: scared_goat_3
       rect:
         serializedVersion: 2
-        x: 54
-        y: 286
-        width: 150
-        height: 192
+        x: 77
+        y: 18
+        width: 38
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,74 +191,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 052ade3eb78695a4d8fa9030df942bd3
-      internalID: 1376797191
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: house_open_4
-      rect:
-        serializedVersion: 2
-        x: 310
-        y: 286
-        width: 150
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f2ed300137a5cbf4081c3981b7b9c13d
-      internalID: -1753438229
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: house_open_5
-      rect:
-        serializedVersion: 2
-        x: 566
-        y: 286
-        width: 150
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1a1929dacc6bee44b81de36f4f65c5de
-      internalID: -68155046
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: house_open_6
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 30
-        width: 150
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 76c19cdf2d460ff46be01c1b30e0190b
-      internalID: 988964484
+      spriteID: 49dc53a01d371c840a37a35123f71228
+      internalID: 350301455
       vertices: []
       indices: 
       edges: []
@@ -277,13 +211,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      house_open_0: -21648061
-      house_open_1: -1732056272
-      house_open_2: 2001787241
-      house_open_3: 1376797191
-      house_open_4: -1753438229
-      house_open_5: -68155046
-      house_open_6: 988964484
+      scared_goat_0: 2009878707
+      scared_goat_1: -1761380526
+      scared_goat_2: 1883773590
+      scared_goat_3: 350301455
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

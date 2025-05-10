@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4221c9c63a2235e408086cc95c077756
+guid: fc6544b8af7d9e34da1911e1878be670
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: house_open_0
+      name: goat_0
       rect:
         serializedVersion: 2
-        x: 54
-        y: 542
-        width: 150
-        height: 192
+        x: 16
+        y: 146
+        width: 34
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +125,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a76cacf539db40458cc9cd6496ab996
-      internalID: -21648061
+      spriteID: 99aeba620d982bc40a94c6379aedc8e7
+      internalID: -89145132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: house_open_1
+      name: goat_1
       rect:
         serializedVersion: 2
-        x: 310
-        y: 542
-        width: 150
-        height: 192
+        x: 80
+        y: 146
+        width: 34
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e46565ea6db60c489f24f576522d860
-      internalID: -1732056272
+      spriteID: b06f50869b281a64c932b63c78b4e99f
+      internalID: -782069571
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: house_open_2
+      name: goat_2
       rect:
         serializedVersion: 2
-        x: 566
-        y: 542
-        width: 150
-        height: 192
+        x: 16
+        y: 82
+        width: 34
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2ca18bc532f9d449a4034f48c87e6f0
-      internalID: 2001787241
+      spriteID: c3e44f1d0debd6c4f8d5b85de2fe17af
+      internalID: 2068499689
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: house_open_3
+      name: goat_3
       rect:
         serializedVersion: 2
-        x: 54
-        y: 286
-        width: 150
-        height: 192
+        x: 80
+        y: 82
+        width: 34
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,20 +191,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 052ade3eb78695a4d8fa9030df942bd3
-      internalID: 1376797191
+      spriteID: 661a9982c8887804fa924eef9f939421
+      internalID: -1045098520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: house_open_4
+      name: goat_4
       rect:
         serializedVersion: 2
-        x: 310
-        y: 286
-        width: 150
-        height: 192
+        x: 16
+        y: 18
+        width: 36
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,52 +213,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2ed300137a5cbf4081c3981b7b9c13d
-      internalID: -1753438229
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: house_open_5
-      rect:
-        serializedVersion: 2
-        x: 566
-        y: 286
-        width: 150
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1a1929dacc6bee44b81de36f4f65c5de
-      internalID: -68155046
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: house_open_6
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 30
-        width: 150
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 76c19cdf2d460ff46be01c1b30e0190b
-      internalID: 988964484
+      spriteID: d3372b331db98ac4a8741fabf891e820
+      internalID: 62248757
       vertices: []
       indices: 
       edges: []
@@ -277,13 +233,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      house_open_0: -21648061
-      house_open_1: -1732056272
-      house_open_2: 2001787241
-      house_open_3: 1376797191
-      house_open_4: -1753438229
-      house_open_5: -68155046
-      house_open_6: 988964484
+      goat_0: -89145132
+      goat_1: -782069571
+      goat_2: 2068499689
+      goat_3: -1045098520
+      goat_4: 62248757
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
