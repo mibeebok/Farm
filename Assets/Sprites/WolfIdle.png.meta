@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 271174354575f274b8237efedd37e269
+guid: e44fabee422cefe4c806c9e234886b8a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,23 +110,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wolf_0
+      name: WolfIdle_0
       rect:
         serializedVersion: 2
         x: 4
-        y: 1
+        y: 33
         width: 20
-        height: 31
+        height: 30
       alignment: 9
-      pivot: {x: 0.48853046, y: 0.15850355}
+      pivot: {x: 0.519116, y: 0.20688972}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e85014f0f8012f54d812db5ee76857eb
-      internalID: 698468662
+      spriteID: d0fd72f6005a919409760714f5a9dfc2
+      internalID: -507414626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfIdle_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 34
+        width: 24
+        height: 29
+      alignment: 9
+      pivot: {x: 0.49681425, y: 0.24687919}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9e5d7bebe727264790994d29c5e7f7c
+      internalID: -702042237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfIdle_2
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1
+        width: 24
+        height: 29
+      alignment: 9
+      pivot: {x: 0.4936281, y: 0.26269922}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0134984745287384da537e20351a0ae7
+      internalID: -1591879786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfIdle_3
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 2
+        width: 23
+        height: 29
+      alignment: 9
+      pivot: {x: 0.4833777, y: 0.2442425}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c191bf502a3287845999c922013d50c3
+      internalID: 1512624151
       vertices: []
       indices: 
       edges: []
@@ -145,7 +211,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      wolf_0: 698468662
+      WolfIdle_0: -507414626
+      WolfIdle_1: -702042237
+      WolfIdle_2: -1591879786
+      WolfIdle_3: 1512624151
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 271174354575f274b8237efedd37e269
+guid: 2b2974728b4ff5e4cb83e5174b365dbf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,23 +110,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wolf_0
+      name: rigth (1)_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 1
-        width: 20
-        height: 31
-      alignment: 9
-      pivot: {x: 0.48853046, y: 0.15850355}
+        x: 5
+        y: 34
+        width: 21
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e85014f0f8012f54d812db5ee76857eb
-      internalID: 698468662
+      spriteID: 5d2103f7471edfcb0800000000000000
+      internalID: -4828455335004990763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigth (1)_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 33
+        width: 21
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a4c67d03dbd8f880800000000000000
+      internalID: -8576863790816639836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigth (1)_2
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 2
+        width: 21
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afbb3fc0cab760e20800000000000000
+      internalID: 3316474154486840314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigth (1)_3
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 2
+        width: 21
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04fcb17dfe2a7c090800000000000000
+      internalID: -8014257860892700864
       vertices: []
       indices: 
       edges: []
@@ -145,7 +211,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      wolf_0: 698468662
+      rigth (1)_0: -4828455335004990763
+      rigth (1)_1: -8576863790816639836
+      rigth (1)_2: 3316474154486840314
+      rigth (1)_3: -8014257860892700864
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
