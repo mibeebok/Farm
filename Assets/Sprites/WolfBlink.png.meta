@@ -110,89 +110,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rigth (1)_0
+      name: WolfBlink_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 34
-        width: 21
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5d2103f7471edfcb0800000000000000
-      internalID: -4828455335004990763
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rigth (1)_1
-      rect:
-        serializedVersion: 2
-        x: 38
+        x: 4
         y: 33
-        width: 21
+        width: 20
         height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.4961769, y: 0.21453603}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4a4c67d03dbd8f880800000000000000
-      internalID: -8576863790816639836
+      spriteID: 6f42b2d515b92a246b7f4fa17f805b6c
+      internalID: 883971110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rigth (1)_2
+      name: WolfBlink_1
       rect:
         serializedVersion: 2
-        x: 6
-        y: 2
-        width: 21
+        x: 36
+        y: 33
+        width: 20
         height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.50382346, y: 0.22982877}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: afbb3fc0cab760e20800000000000000
-      internalID: 3316474154486840314
+      spriteID: 853e2c93319058c419ba7016e763e803
+      internalID: -1341289192
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rigth (1)_3
+      name: WolfBlink_2
       rect:
         serializedVersion: 2
-        x: 37
-        y: 2
-        width: 21
+        x: 4
+        y: 1
+        width: 20
         height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5000001, y: 0.25531656}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 04fcb17dfe2a7c090800000000000000
-      internalID: -8014257860892700864
+      spriteID: a83afa3f983f92345a55d387b8658a12
+      internalID: 1371033513
       vertices: []
       indices: 
       edges: []
@@ -211,10 +189,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      rigth (1)_0: -4828455335004990763
-      rigth (1)_1: -8576863790816639836
-      rigth (1)_2: 3316474154486840314
-      rigth (1)_3: -8014257860892700864
+      WolfBlink_0: 883971110
+      WolfBlink_1: -1341289192
+      WolfBlink_2: 1371033513
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
