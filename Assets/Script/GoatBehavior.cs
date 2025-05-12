@@ -1,10 +1,16 @@
 using UnityEngine;
 
-public class GoatBehavior : MonoBehaviour
+public class GoatBehavior : Sounds
 {
     [Header("Detection Settings")]
-    [SerializeField] private float detectionRadius = 5f;
+    [SerializeField] private float detectionRadius = 5f; // Радиус обнаружения игрока
+    [SerializeField] private float soundPlayRadius = 3f; // Радиус для воспроизведения звука
     [SerializeField] private LayerMask playerLayer;
+    
+    [Header("Sound Settings")]
+    [SerializeField] private float playInterval = 6f; // Интервал между звуками
+    [SerializeField] private float minVolume = 0.1f; // Минимальная громкость
+    [SerializeField] private float maxVolume = 0.3f; // Максимальная громкость
     
     [Header("Animation Settings")]
     [SerializeField] private Animator goatAnimator;
@@ -12,13 +18,12 @@ public class GoatBehavior : MonoBehaviour
     
     private Transform player;
     private bool isPlayerNear;
-    
+    private float time = 0f;
+
     private void Start()
     {
-        // Находим игрока по тегу
         player = GameObject.FindGameObjectWithTag("Player").transform;
         
-        // Проверяем наличие компонентов
         if (goatAnimator == null)
         {
             goatAnimator = GetComponent<Animator>();
@@ -31,21 +36,52 @@ public class GoatBehavior : MonoBehaviour
     
     private void Update()
     {
+        if (player == null) return;
+
         // Проверяем расстояние до игрока
-        if (player != null)
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        isPlayerNear = distanceToPlayer <= detectionRadius;
+        
+        // Управляем анимацией
+        goatAnimator.SetBool(scaredParameter, isPlayerNear);
+
+        // Логика воспроизведения звука
+        time += Time.deltaTime;
+        
+        if (time >= playInterval)
         {
-            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-            isPlayerNear = distanceToPlayer <= detectionRadius;
-            
-            // Управляем анимацией
-            goatAnimator.SetBool(scaredParameter, isPlayerNear);
+            // Проверяем, находится ли игрок в радиусе звука
+            if (distanceToPlayer <= soundPlayRadius)
+            {
+                // Рассчитываем громкость в зависимости от расстояния (чем ближе - тем громче)
+                float volume = Mathf.Lerp(maxVolume, minVolume, 
+                                       distanceToPlayer / soundPlayRadius);
+                
+                PlaySound(sounds[0], volume: volume, p1: 0.9f, p2: 1.3f);
+            }
+            time = 0;
         }
     }
     
-    // Визуализация радиуса обнаружения в редакторе
+    // Визуализация радиусов в редакторе
     private void OnDrawGizmosSelected()
     {
+        // Радиус обнаружения (желтый)
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        
+        // Радиус звука (зеленый)
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, soundPlayRadius);
+    }
+
+    public void GoatScared()
+    {
+        PlaySound(sounds[1], volume: 0.5f);
+    }
+    
+    public void GoatIdle()
+    {
+        PlaySound(sounds[0], volume: 0.2f, p1: 0.9f, p2: 1.1f);
     }
 }

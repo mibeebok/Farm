@@ -2,8 +2,13 @@ using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Sounds
 {
+
+    [Header("Footstep Settings")]
+    [SerializeField] private float walkStepInterval = 0.5f;
+    [SerializeField] private float runStepInterval = 0.3f;
+    private float stepCooldown = 0f;
 
     public static Player Instance {get; private set;}
 
@@ -120,6 +125,20 @@ public class Player : MonoBehaviour
     }
     public bool IsRunning() {
         return isRunning;
+    }
+    void Update()
+    {
+        if (isWolk || isWolkLeft || isWolkStraight || isWolkBack){
+            stepCooldown -=Time.deltaTime;
+            if(stepCooldown<=0){
+                PlayStepSound();
+                stepCooldown = isRunning ? runStepInterval : walkStepInterval;
+            }
+        }
+    }
+
+    private void PlayStepSound(){
+        PlaySound(sounds[0],volume: 0.45f, p1: isRunning ? 1.1f : 0.9f, p2: isRunning ? 1.3f : 1.1f);
     }
 
     public void SetMovementBlocked(bool bloced){
