@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FarmGrid : MonoBehaviour
+public class FarmGrid : Sounds
 {
     public int gridSizeX = 100; // Ширина карты в блоках
     public int gridSizeY = 100; // Высота карты в блоках
@@ -11,6 +11,7 @@ public class FarmGrid : MonoBehaviour
 
     private void Start()
     {
+        PlaySound(sounds[0], volume: 0.3f);
         GenerateGrid();
     }
 
