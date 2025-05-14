@@ -1,24 +1,29 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class InventoryController : MonoBehaviour 
 {
     [Header("Hotbar Settings")]
-    public int hotbarSize = 7; // Количество слотов быстрого доступа
-    public SpriteRenderer[] slotRenderers; // Спрайты слотов
+    public int hotbarSize = 7;
+    public SpriteRenderer[] slotRenderers;
     public Color activeSlotColor = Color.yellow;
     public Color normalSlotColor = Color.white;
     
     [Header("Inventory References")]
-    public GameObject fullInventoryUI; // Полноэкранный инвентарь
-    public Inventory mainInventory; // Ссылка на основной инвентарь
-    public Transform player; // Ссылка на игрока
-
-    [Header("Item Icons")]
-    public Sprite[] itemIcons; // Альтернативные иконки предметов (если не используется mainInventory)
+    public GameObject fullInventoryUI;
+    public Inventory mainInventory;
+    public DataBase database;
+    public Transform player;
+    
+    [Header("Drag & Drop")]
+    public GameObject dragItemPrefab;
+    public float dragOffset = 1f;
 
     private int currentSlot = 0;
     private bool isInventoryOpen = false;
     private Vector3 lastPlayerPosition;
+    private GameObject currentDragItem;
+    private int dragOriginSlot = -1;
 
     void Start() 
     {
@@ -34,22 +39,23 @@ public class InventoryController : MonoBehaviour
 
     void InitializeHotbar()
     {
-        // Автоинициализация если не настроено вручную
         if(slotRenderers == null || slotRenderers.Length == 0)
         {
-            slotRenderers = new SpriteRenderer[hotbarSize + 1]; // +1 для кнопки инвентаря
+            slotRenderers = new SpriteRenderer[hotbarSize + 1];
             
             for(int i = 0; i <= hotbarSize; i++)
             {
-                Transform slot = transform.Find($"Slot_{i+1}");
+                string slotName = i < hotbarSize ? $"Slot_{i+1}" : "InventoryButton";
+                Transform slot = transform.Find(slotName);
+                
                 if(slot != null)
                 {
                     slotRenderers[i] = slot.GetComponent<SpriteRenderer>();
                     
-                    // Добавляем коллайдер если нет
                     if(slot.GetComponent<BoxCollider2D>() == null)
                     {
-                        slot.gameObject.AddComponent<BoxCollider2D>();
+                        var collider = slot.gameObject.AddComponent<BoxCollider2D>();
+                        collider.size = new Vector2(1, 1);
                     }
                 }
             }
@@ -60,14 +66,135 @@ public class InventoryController : MonoBehaviour
     {
         HandlePlayerMovement();
         HandleInput();
+        HandleDragAndDrop();
     }
-     public void UpdateHotbarVisual(int slotId, int itemId, int count)
+
+    void HandleDragAndDrop()
     {
-        if(slotId < 0 || slotId >= slotRenderers.Length || slotRenderers[slotId] == null) 
-            return;
+        if(Input.GetMouseButtonDown(0) && !isInventoryOpen)
+        {
+            StartDrag();
+        }
         
-        Item item = mainInventory.data.GetItemById(itemId);
-        slotRenderers[slotId].sprite = item?.img;
+        if(Input.GetMouseButton(0) && currentDragItem != null)
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0;
+            currentDragItem.transform.position = mousePos + new Vector3(0, dragOffset, 0);
+        }
+        
+        if(Input.GetMouseButtonUp(0) && currentDragItem != null)
+        {
+            EndDrag();
+        }
+    }
+
+    void StartDrag()
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+        
+        if(hit.collider != null)
+        {
+            for(int i = 0; i < hotbarSize; i++)
+            {
+                if(slotRenderers[i] != null && hit.collider.gameObject == slotRenderers[i].gameObject)
+                {
+                    Item item = GetItemInSlot(i);
+                    if(item != null && item.id != 0)
+                    {
+                        dragOriginSlot = i;
+                        StartDragItem(item.img);
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+   void EndDrag()
+{
+    Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+    bool droppedOnSlot = false;
+
+    if(hit.collider != null)
+    {
+        for(int i = 0; i < hotbarSize; i++)
+        {
+            if(slotRenderers[i] != null && hit.collider.gameObject == slotRenderers[i].gameObject)
+            {
+                SwapSlots(dragOriginSlot, i);
+                droppedOnSlot = true;
+                break;
+            }
+        }
+    }
+
+    if(!droppedOnSlot && mainInventory != null && isInventoryOpen)
+    {
+        MoveItemToMainInventory(dragOriginSlot); // Используем восстановленный метод
+    }
+
+    Destroy(currentDragItem);
+    currentDragItem = null;
+    dragOriginSlot = -1;
+}
+    // Добавьте этот метод в ваш InventoryController
+public void MoveItemToMainInventory(int hotbarSlotIndex)
+{
+    if (mainInventory == null || hotbarSlotIndex < 0 || hotbarSlotIndex >= hotbarSize) 
+        return;
+    
+    // Получаем предмет из хотбара
+    Item item = database.GetItemById(mainInventory.items[hotbarSlotIndex].id);
+    if (item == null || item.id == 0) return; // Проверка на пустой слот
+
+    // Пытаемся добавить в основной инвентарь
+    if (mainInventory.AddItemToFirstFreeSlot(item, 1))
+    {
+        // Уменьшаем количество в хотбаре
+        mainInventory.items[hotbarSlotIndex].count--;
+        
+        // Если предметов не осталось - очищаем слот
+        if (mainInventory.items[hotbarSlotIndex].count <= 0)
+        {
+            mainInventory.items[hotbarSlotIndex].id = 0;
+        }
+        
+        UpdateSlotVisuals();
+        mainInventory.UpdateInventory();
+    }
+}
+
+
+
+    void SwapSlots(int fromSlot, int toSlot)
+    {
+        if(mainInventory == null) return;
+        
+        // Временное хранение предметов
+        int tempId = mainInventory.items[fromSlot].id;
+        int tempCount = mainInventory.items[fromSlot].count;
+        
+        // Перемещение
+        mainInventory.items[fromSlot].id = mainInventory.items[toSlot].id;
+        mainInventory.items[fromSlot].count = mainInventory.items[toSlot].count;
+        
+        mainInventory.items[toSlot].id = tempId;
+        mainInventory.items[toSlot].count = tempCount;
+        
+        UpdateSlotVisuals();
+        mainInventory.UpdateInventory();
+    }
+
+    void StartDragItem(Sprite sprite)
+    {
+        if(dragItemPrefab != null && sprite != null)
+        {
+            currentDragItem = Instantiate(dragItemPrefab);
+            currentDragItem.GetComponent<SpriteRenderer>().sprite = sprite;
+        }
     }
 
     void HandlePlayerMovement()
@@ -82,13 +209,11 @@ public class InventoryController : MonoBehaviour
 
     void HandleInput()
     {
-        // Клик ЛКМ
         if(Input.GetMouseButtonDown(0))
         {
             HandleMouseClick();
         }
 
-        // Прокрутка колесика
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if(scroll != 0 && !isInventoryOpen)
         {
@@ -96,7 +221,6 @@ public class InventoryController : MonoBehaviour
             UpdateSlotVisuals();
         }
 
-        // Цифровые клавиши 1-7
         for(int i = 0; i < hotbarSize; i++)
         {
             if(Input.GetKeyDown(KeyCode.Alpha1 + i) && !isInventoryOpen)
@@ -109,6 +233,8 @@ public class InventoryController : MonoBehaviour
 
     void HandleMouseClick()
     {
+        if(currentDragItem != null) return;
+        
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
 
@@ -118,11 +244,11 @@ public class InventoryController : MonoBehaviour
             {
                 if(slotRenderers[i] != null && hit.collider.gameObject == slotRenderers[i].gameObject)
                 {
-                    if(i == hotbarSize) // Последний слот - кнопка инвентаря
+                    if(i == hotbarSize)
                     {
                         ToggleInventory();
                     }
-                    else if(i < hotbarSize) // Обычные слоты
+                    else
                     {
                         currentSlot = i;
                         UpdateSlotVisuals();
@@ -135,39 +261,29 @@ public class InventoryController : MonoBehaviour
 
     void UpdateSlotVisuals()
     {
-        // Обновляем цвета выбранного слота
         for(int i = 0; i < hotbarSize; i++)
         {
             if(slotRenderers[i] != null)
             {
                 slotRenderers[i].color = i == currentSlot ? activeSlotColor : normalSlotColor;
-            }
-        }
-
-        // Обновляем иконки предметов
-        if(mainInventory != null)
-        {
-            // Из основного инвентаря
-            for(int i = 0; i < hotbarSize; i++)
-            {
-                if(i < mainInventory.items.Count && slotRenderers[i] != null)
+                
+                if(mainInventory != null && i < mainInventory.items.Count)
                 {
-                    Item item = mainInventory.data.GetItemById(mainInventory.items[i].id);
+                    Item item = database.GetItemById(mainInventory.items[i].id);
                     slotRenderers[i].sprite = item?.img;
+                    slotRenderers[i].enabled = item != null;
                 }
             }
         }
-        else if(itemIcons != null)
+    }
+
+    Item GetItemInSlot(int slotIndex)
+    {
+        if(mainInventory != null && slotIndex < mainInventory.items.Count)
         {
-            // Из локального массива иконок
-            for(int i = 0; i < Mathf.Min(hotbarSize, itemIcons.Length); i++)
-            {
-                if(slotRenderers[i] != null)
-                {
-                    slotRenderers[i].sprite = itemIcons[i];
-                }
-            }
+            return database.GetItemById(mainInventory.items[slotIndex].id);
         }
+        return null;
     }
 
     void ToggleInventory()
@@ -211,18 +327,10 @@ public class InventoryController : MonoBehaviour
 
     public Item GetSelectedItem()
     {
-        if(mainInventory != null)
+        if(mainInventory != null && currentSlot >= 0 && currentSlot < mainInventory.items.Count)
         {
-            // Получаем из основного инвентаря
-            if(currentSlot >= 0 && currentSlot < mainInventory.items.Count)
-                return mainInventory.data.GetItemById(mainInventory.items[currentSlot].id);
+            return database.GetItemById(mainInventory.items[currentSlot].id);
         }
-        else if(itemIcons != null && currentSlot >= 0 && currentSlot < itemIcons.Length)
-        {
-            // Создаем временный объект Item для локальных иконок
-            return new Item() { img = itemIcons[currentSlot] };
-        }
-        
         return null;
     }
 }
