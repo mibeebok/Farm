@@ -1,95 +1,77 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class WateringCanController : MonoBehaviour
 {
-    [Header("Настройки")]
-    [SerializeField] private int assignedSlotIndex = 0;
-    [SerializeField] private LayerMask farmLandLayer;
-    [SerializeField] private float wateringCooldown = 0.5f;
-    [SerializeField] private Color wateredColor = new Color(0.5f, 0.8f, 1f); // Цвет политой земли
-    
-    [Header("Эффекты")]
-    [SerializeField] private ParticleSystem waterParticles;
-    [SerializeField] private AudioClip wateringSound;
+    [Header("References")]
+    public InventoryController inventoryController;
+    public Animator handsAnimator;
 
-    private FarmGrid farmGrid;
-    private InventoryController inventory;
-    private Camera mainCamera;
-    private bool isSelected = false;
-    private float lastWateringTime;
-    private AudioSource audioSource;
+    [Header("Watering Settings")]
+    public int wateringCanItemId = 1; // ID лейки в базе данных
+    public string wateringTrigger = "Water"; // Имя триггера в Animator
+    public float soilWateringDelay = 0.4f;
 
-    private void Awake()
+    void Update()
     {
-        mainCamera = Camera.main;
-        inventory = FindObjectOfType<InventoryController>();
-        farmGrid = FindObjectOfType<FarmGrid>();
-        audioSource = GetComponent<AudioSource>() ?? gameObject.AddComponent<AudioSource>();
-    }
-
-    private void Update()
-    {
-        isSelected = inventory != null && inventory.GetSelectedSlot() == assignedSlotIndex;
-        
-        if (isSelected && Input.GetMouseButtonDown(0) 
-            && !IsPointerOverUI() && CanWaterNow())
+        // Проверяем, выбран ли нужный слот и нажата ЛКМ
+        if (Input.GetMouseButtonDown(0))
         {
-            TryWatering();
+            TryWaterSoil();
+        }
+        if (Input.GetMouseButtonDown(0))
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+
+        if (hit.collider != null)
+        {
+            Debug.Log("Попали в объект: " + hit.collider.name);
+
+            if (hit.collider.CompareTag("Soil"))
+            {
+                Debug.Log("Клик по земле!");
+
+                // Тест анимации
+                if (handsAnimator != null)
+                    handsAnimator.SetTrigger("Water");
+
+                // Тест полива
+                var soil = hit.collider.GetComponent<SoilTile>();
+                if (soil != null)
+                    soil.Water();
+            }
         }
     }
-
-    private bool CanWaterNow()
-    {
-        return Time.time > lastWateringTime + wateringCooldown;
     }
 
-    private void TryWatering()
+    void TryWaterSoil()
     {
-        Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, Mathf.Infinity, farmLandLayer);
-        
-        if (hit.collider != null && farmGrid != null)
+        if (inventoryController == null) return;
+
+        // Только если выбран слот 0 и в нём лейка
+        if (inventoryController.GetSelectedSlot() != 0) return;
+
+        Item selectedItem = inventoryController.GetSelectedItem();
+        if (selectedItem == null || selectedItem.id != wateringCanItemId) return;
+
+        // Наводим луч на землю
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+
+        if (hit.collider != null && hit.collider.CompareTag("Soil"))
         {
-            lastWateringTime = Time.time;
-            PlayWateringEffects(hit.point);
-            WaterTile(hit.point);
+            // Анимация полива
+            if (handsAnimator != null)
+            {
+                handsAnimator.SetTrigger(wateringTrigger);
+            }
+
+            // Увлажнение земли
+            SoilTile soil = hit.collider.GetComponent<SoilTile>();
+            if (soil != null)
+            {
+                StartCoroutine(soil.WaterWithDelay(soilWateringDelay));
+            }
         }
-    }
-
-    private void WaterTile(Vector2 worldPosition)
-    {
-        // Конвертируем мировые координаты в координаты сетки
-        Vector3 gridCenter = new Vector3(
-            (farmGrid.gridSizeX - 1) * farmGrid.cellSize * 0.5f,
-            (farmGrid.gridSizeY - 1) * farmGrid.cellSize * 0.5f,
-            0
-        );
-
-        // Вычисляем координаты тайла
-        int x = Mathf.RoundToInt((worldPosition.x + gridCenter.x) / farmGrid.cellSize);
-        int y = Mathf.RoundToInt((worldPosition.y + gridCenter.y) / farmGrid.cellSize);
-
-        // Изменяем состояние тайла
-        farmGrid.ChangeTileState(x, y, wateredColor);
-    }
-
-    private void PlayWateringEffects(Vector2 position)
-    {
-        if (waterParticles != null)
-        {
-            waterParticles.transform.position = position;
-            waterParticles.Play();
-        }
-        
-        if (wateringSound != null)
-        {
-            audioSource.PlayOneShot(wateringSound);
-        }
-    }
-
-    private bool IsPointerOverUI()
-    {
-        return EventSystem.current.IsPointerOverGameObject();
     }
 }

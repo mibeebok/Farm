@@ -3,56 +3,53 @@ using UnityEngine.UI;
 
 public class EcologyController : MonoBehaviour
 {
-    [Header("Sleep Setting")]
-    [SerializeField] private Slider ecoSlider;
-    [SerializeField] private float maxEco = 150f;
-    [SerializeField] private Image fillImage;
+    [Header("Основные настройки")]
+    [SerializeField] public Slider ecoSlider;
+    [SerializeField] public float maxEco = 200f;
+    public float deplicationRate = 1f;
+    public float deplicationAmount = 0.01f;
 
-    [Header("Color Settings")]
-    [SerializeField] private Color wellColor = Color.green;
-    [SerializeField] private Color sosoColor = new Color(1f, 0.5f, 0f);
-    [SerializeField] private Color badColor = Color.red;
+    [Header("Настройка цвета")]
+    [SerializeField] public Color wellColor = Color.green;
+    [SerializeField] public Color sosoColor = new Color(1f, 0.5f, 0f);
+    [SerializeField] public Color badColor = Color.red;
 
-    public static float CurrentEco { get; private set; }
+    private float currentEco;
 
     private void Start()
     {
-        CurrentEco = maxEco;
+        currentEco = maxEco;
 
-        if (ecoSlider == null)
-            ecoSlider = GetComponent<Slider>();
-        if (fillImage == null && ecoSlider != null)
-            fillImage = ecoSlider.fillRect.GetComponent<Image>();
+        UpdateEcoUI();
     }
     void Update()
     {
+        currentEco -= deplicationAmount * deplicationRate * Time.deltaTime;
+        currentEco = Mathf.Clamp(currentEco + deplicationAmount, 0f, maxEco);
         UpdateEcoUI();
+    }
+
+    public void RestoreEco(float amount)
+    {
+        currentEco = Mathf.Clamp(currentEco + amount, 0f, maxEco);
+    }
+
+    public void SetDeplicationRate(float rate)
+    {
+        deplicationRate = rate;
     }
 
     private void UpdateEcoUI()
     {
-        if (ecoSlider != null)
-        {
-            ecoSlider.value = CurrentEco;
-            if (fillImage != null)
-            {
-                fillImage.color = CurrentEco switch
-                {
-                    >= 50f => wellColor,
-                    >= 30f => sosoColor,
-                    _ => badColor
-                };
-            }
-        }
-    }
+        if (ecoSlider == null) return;
 
-    public static void AddEco(float amount)
-    {
-        CurrentEco = Mathf.Clamp(CurrentEco + amount, 0f, 150f);
-    }
+        float ecoPercentage = currentEco / maxEco * 100f;
 
-    public static void RecudeEco(float amount)
-    {
-        CurrentEco = Mathf.Clamp(CurrentEco - amount, 0f, 150f);
+        if (ecoPercentage >= 100)
+            ecoSlider.fillRect.GetComponent<Image>().color = wellColor;
+        else if (ecoPercentage >= 30f)
+            ecoSlider.fillRect.GetComponent<Image>().color = sosoColor;
+        else
+            ecoSlider.fillRect.GetComponent<Image>().color = badColor;
     }
 }
