@@ -276,6 +276,7 @@ public class InventoryController : MonoBehaviour
 
         return null;
     }
+    
 
     public Item GetSelectedItem() => GetItemInSlot(currentSlot);
     public int GetSelectedSlot() => currentSlot;

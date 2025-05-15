@@ -321,6 +321,7 @@ GameObject:
   - component: {fileID: 7226252}
   - component: {fileID: 7226251}
   - component: {fileID: 7226253}
+  - component: {fileID: 7226254}
   m_Layer: 0
   m_Name: Slot_2
   m_TagString: Untagged
@@ -445,6 +446,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.75, y: 1.8125}
   m_EdgeRadius: 0
+--- !u!114 &7226254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 609f7e20b7f0fdf438e3ebce7014ea2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds: []
+  inventoryController: {fileID: 1970771574}
+  handsAnimator: {fileID: 1355287729}
+  mattockItemId: 2
+  mattockBool: Mattock
+  soilMattockDelay: 0.4
 --- !u!1001 &10659120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1724,10 +1743,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8369362628735009813, guid: 89906ded11bb2414a868f43f292a62e9, type: 3}
+      propertyPath: normalSprite
+      value: 
+      objectReference: {fileID: 3316474154486840314, guid: 83db254a238e8aa41b38a36c82e71d07, type: 3}
+    - target: {fileID: 8369362628735009813, guid: 89906ded11bb2414a868f43f292a62e9, type: 3}
+      propertyPath: plowedSprite
+      value: 
+      objectReference: {fileID: 2068271482, guid: 7e3bdaa8ec4d133408a3982ec55eda7a, type: 3}
+    - target: {fileID: 8369362628735009813, guid: 89906ded11bb2414a868f43f292a62e9, type: 3}
+      propertyPath: wateredSprite
+      value: 
+      objectReference: {fileID: -552690664, guid: 7e3bdaa8ec4d133408a3982ec55eda7a, type: 3}
+    m_RemovedComponents:
+    - {fileID: 8369362628735009813, guid: 89906ded11bb2414a868f43f292a62e9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2283374038678035875, guid: 89906ded11bb2414a868f43f292a62e9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 529959059}
+    - targetCorrespondingSourceObject: {fileID: 2283374038678035875, guid: 89906ded11bb2414a868f43f292a62e9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 529959058}
   m_SourcePrefab: {fileID: 100100000, guid: 89906ded11bb2414a868f43f292a62e9, type: 3}
 --- !u!1 &94365756
 GameObject:
@@ -5565,10 +5603,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d563497e8bfd4b4aa346c6956b8a260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sounds: []
   inventoryController: {fileID: 1970771574}
   handsAnimator: {fileID: 1355287729}
   wateringCanItemId: 1
-  wateringTrigger: Water
+  wateringBool: Water
   soilWateringDelay: 0.4
 --- !u!82 &439033437
 AudioSource:
@@ -8025,6 +8064,41 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70d96521c9ea3a545b01f5b1424f862e, type: 3}
+--- !u!1 &529959053 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2283374038678035875, guid: 89906ded11bb2414a868f43f292a62e9, type: 3}
+  m_PrefabInstance: {fileID: 93110049}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &529959058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529959053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5db0f3b98426e4189bf58d669904d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalSprite: {fileID: 3316474154486840314, guid: 83db254a238e8aa41b38a36c82e71d07, type: 3}
+  plowedSprite: {fileID: 2068271482, guid: 7e3bdaa8ec4d133408a3982ec55eda7a, type: 3}
+  wateredSprite: {fileID: -552690664, guid: 7e3bdaa8ec4d133408a3982ec55eda7a, type: 3}
+--- !u!114 &529959059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529959053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db80b9036b61bb240a0bc78bd86c95ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWatered: 0
+  dryColor: {r: 1, g: 1, b: 1, a: 1}
+  wateredColor: {r: 0.5, g: 0.8, b: 1, a: 1}
 --- !u!1001 &541839092
 PrefabInstance:
   m_ObjectHideFlags: 0
