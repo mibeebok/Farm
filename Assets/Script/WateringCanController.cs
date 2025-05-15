@@ -1,15 +1,18 @@
 using UnityEngine;
+using System.Collections;
 
-public class WateringCanController : MonoBehaviour
+public class WateringCanController : Sounds
 {
     [Header("References")]
     public InventoryController inventoryController;
     public Animator handsAnimator;
 
     [Header("Watering Settings")]
-    public int wateringCanItemId = 1; // ID лейки в базе данных
-    public string wateringTrigger = "Water"; // Имя триггера в Animator
+    public int wateringCanItemId = 1; // ID лейки
+    public string wateringBool = "Water"; // Имя параметра bool
     public float soilWateringDelay = 0.4f;
+
+    private bool isWatering = false;
 
     void Update()
     {
@@ -18,60 +21,59 @@ public class WateringCanController : MonoBehaviour
         {
             TryWaterSoil();
         }
-        if (Input.GetMouseButtonDown(0))
-    {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
-
-        if (hit.collider != null)
-        {
-            Debug.Log("Попали в объект: " + hit.collider.name);
-
-            if (hit.collider.CompareTag("Soil"))
-            {
-                Debug.Log("Клик по земле!");
-
-                // Тест анимации
-                if (handsAnimator != null)
-                    handsAnimator.SetTrigger("Water");
-
-                // Тест полива
-                var soil = hit.collider.GetComponent<SoilTile>();
-                if (soil != null)
-                    soil.Water();
-            }
-        }
-    }
     }
 
     void TryWaterSoil()
     {
         if (inventoryController == null) return;
 
-        // Только если выбран слот 0 и в нём лейка
+        // Только если выбран слот 0 (с лейкой)
         if (inventoryController.GetSelectedSlot() != 0) return;
 
-        Item selectedItem = inventoryController.GetSelectedItem();
-        if (selectedItem == null || selectedItem.id != wateringCanItemId) return;
-
-        // Наводим луч на землю
+        // Проверка попадания по земле
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
 
         if (hit.collider != null && hit.collider.CompareTag("Soil"))
         {
-            // Анимация полива
-            if (handsAnimator != null)
+            // Запуск анимации полива
+            if (handsAnimator != null && !isWatering)
             {
-                handsAnimator.SetTrigger(wateringTrigger);
+                handsAnimator.SetBool(wateringBool, true);
+                StartCoroutine(ResetWateringBool());
             }
 
-            // Увлажнение земли
-            SoilTile soil = hit.collider.GetComponent<SoilTile>();
+            // Полив земли с задержкой
+            SoilTileWateringCan soil = hit.collider.GetComponent<SoilTileWateringCan>();
             if (soil != null)
             {
                 StartCoroutine(soil.WaterWithDelay(soilWateringDelay));
             }
         }
+    }
+
+    IEnumerator ResetWateringBool()
+    {
+        isWatering = true;
+
+        // Ждём длину анимации (замени "Watering" на точное имя клипа)
+        AnimationClip wateringClip = GetAnimationClipByName("Watering");
+        float duration = wateringClip != null ? wateringClip.length : 1f;
+
+        yield return new WaitForSeconds(duration);
+
+        handsAnimator.SetBool(wateringBool, false);
+        isWatering = false;
+    }
+
+    AnimationClip GetAnimationClipByName(string name)
+    {
+        RuntimeAnimatorController ac = handsAnimator.runtimeAnimatorController;
+        foreach (var clip in ac.animationClips)
+        {
+            if (clip.name == name)
+                return clip;
+        }
+        return null;
     }
 }

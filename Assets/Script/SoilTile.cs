@@ -1,24 +1,32 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
 public class SoilTile : MonoBehaviour
 {
-    public bool isWatered = false;
-    public Color dryColor = Color.white;
-    public Color wateredColor = new Color(0.5f, 0.8f, 1f);
-    private SpriteRenderer sr;
+    public Sprite normalSprite;
+    public Sprite plowedSprite;
+    public Sprite wateredSprite;
+
+    private SpriteRenderer spriteRenderer;
 
     void Awake()
     {
-        sr = GetComponent<SpriteRenderer>();
-        UpdateVisual();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null)
+            Debug.LogError("SpriteRenderer не найден на " + gameObject.name);
     }
 
-    public void Water()
+    public void Plow()
     {
-        if (isWatered) return;
-        isWatered = true;
-        UpdateVisual();
+        if (spriteRenderer != null && plowedSprite != null)
+        {
+            Debug.Log("Меняем спрайт на вспаханную землю.");
+            spriteRenderer.sprite = plowedSprite;
+        }
+        else
+        {
+            Debug.LogWarning("Не удалось вспахать: spriteRenderer или plowedSprite отсутствует.");
+        }
     }
 
     public IEnumerator WaterWithDelay(float delay)
@@ -27,8 +35,12 @@ public class SoilTile : MonoBehaviour
         Water();
     }
 
-    void UpdateVisual()
+    public void Water()
     {
-        sr.color = isWatered ? wateredColor : dryColor;
+        if (spriteRenderer != null && wateredSprite != null)
+        {
+            Debug.Log("Полив земли — меняем спрайт.");
+            spriteRenderer.sprite = wateredSprite;
+        }
     }
 }
