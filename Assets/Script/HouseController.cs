@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class HouseController : MonoBehaviour
 {
@@ -11,10 +12,13 @@ public class HouseController : MonoBehaviour
     [SerializeField] private CanvasGroup darknessPanel;
     [SerializeField] private float fadeDuration = 1f;
     [SerializeField] private Transform playerVisual;
+    [SerializeField] private float sleepRestoreAmount = 100f; // Полное восстановление сна
+    [SerializeField] private float sleepDepletionRate = 1.5f; // Множитель расхода сна (1.5 = на 50% быстрее)
 
     private Transform player;
     private bool isInteractable = true;
-    private const string DaysPassedKey = "DaysPassed"; // Ключ для сохранения
+    private const string DaysPassedKey = "DaysPassed";
+    private SleepController sleepController;
 
     public static int DaysPassed
     {
@@ -25,6 +29,7 @@ public class HouseController : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        sleepController = FindObjectOfType<SleepController>();
         
         if (!playerVisual && player)
             playerVisual = player.Find("PlayerVisual");
@@ -37,9 +42,6 @@ public class HouseController : MonoBehaviour
             darknessPanel.alpha = 0;
             darknessPanel.blocksRaycasts = false;
         }
-
-        // Загрузка сохраненного количества дней при старте
-        Debug.Log($"Загружено дней: {DaysPassed}");
     }
 
     private void Update()
@@ -59,36 +61,55 @@ public class HouseController : MonoBehaviour
     {
         isInteractable = false;
 
+        // Открываем дверь
         if (doorAnimator)
         {
             doorAnimator.SetBool(doorBoolParameter, true);
             yield return new WaitForSeconds(0.5f);
         }
 
+        // Скрываем персонажа
         if (playerVisual)
-        {
             playerVisual.gameObject.SetActive(false);
-        }
-        else Debug.LogError("PlayerVisual не найден");
+        else
+            Debug.LogError("PlayerVisual не найден");
 
+        // Затемнение экрана
         yield return StartCoroutine(FadeScreen(0f, 1f));
+        
+        // Восстанавливаем сон
+        if (sleepController != null)
+        {
+            sleepController.RestoreSleep(sleepRestoreAmount);
+        }
+        
+        // Увеличиваем скорость расхода сна
+        if (sleepController != null)
+        {
+            sleepController.SetDepletionRate(sleepDepletionRate);
+        }
+
+        // Ждем ночь
         yield return new WaitForSeconds(nightDuration);
+        
+        // Осветление экрана
         yield return StartCoroutine(FadeScreen(1f, 0f));
 
+        // Показываем персонажа
         if (playerVisual) 
             playerVisual.gameObject.SetActive(true);
 
+        // Закрываем дверь
         if (doorAnimator)
             doorAnimator.SetBool(doorBoolParameter, false);
 
-        // Увеличиваем и сохраняем количество дней
+        // Увеличиваем счетчик дней
         DaysPassed++;
         Debug.Log($"Всего дней: {DaysPassed}");
 
         isInteractable = true;
     }
 
-    // Остальные методы без изменений
     private IEnumerator FadeScreen(float start, float end)
     {
         if (!darknessPanel) yield break;

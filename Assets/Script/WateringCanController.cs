@@ -1,109 +1,95 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(Animator))]
 public class WateringCanController : MonoBehaviour
 {
-    [Header("Animation Settings")]
-    [SerializeField] private float animationSpeed = 1f;
-    [SerializeField] private string wateringTrigger = "Water";
+    [Header("Настройки")]
+    [SerializeField] private int assignedSlotIndex = 0;
     [SerializeField] private LayerMask farmLandLayer;
-    
-    [Header("Watering Settings")]
     [SerializeField] private float wateringCooldown = 0.5f;
-    [SerializeField] private ParticleSystem waterParticles;
+    [SerializeField] private Color wateredColor = new Color(0.5f, 0.8f, 1f); // Цвет политой земли
     
+    [Header("Эффекты")]
+    [SerializeField] private ParticleSystem waterParticles;
+    [SerializeField] private AudioClip wateringSound;
+
+    private FarmGrid farmGrid;
+    private InventoryController inventory;
     private Camera mainCamera;
-    private Animator animator;
     private bool isSelected = false;
     private float lastWateringTime;
-    
-    
+    private AudioSource audioSource;
+
     private void Awake()
     {
         mainCamera = Camera.main;
-        animator = GetComponent<Animator>();
-        // Добавьте проверку параметров
-        if (animator != null)
-        {
-            bool hasWaterParam = false;
-            foreach (var param in animator.parameters)
-            {
-                if (param.name == wateringTrigger && param.type == AnimatorControllerParameterType.Trigger)
-                {
-                    hasWaterParam = true;
-                    break;
-                }
-            }
-            
-            if (!hasWaterParam)
-            {
-                Debug.LogError($"Animator parameter '{wateringTrigger}' not found or not a Trigger!");
-            }
-        }
-        else
-        {
-            Debug.LogError("Animator component not found!");
-        }
-        animator.speed = animationSpeed;
-        
-        if (waterParticles != null)
-            waterParticles.Stop();
+        inventory = FindObjectOfType<InventoryController>();
+        farmGrid = FindObjectOfType<FarmGrid>();
+        audioSource = GetComponent<AudioSource>() ?? gameObject.AddComponent<AudioSource>();
     }
-    
+
     private void Update()
     {
-        if (!isSelected) return;
+        isSelected = inventory != null && inventory.GetSelectedSlot() == assignedSlotIndex;
         
-        if (Input.GetMouseButtonDown(0) && Time.time > lastWateringTime + wateringCooldown)
+        if (isSelected && Input.GetMouseButtonDown(0) 
+            && !IsPointerOverUI() && CanWaterNow())
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
-            
-            Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, Mathf.Infinity, farmLandLayer);
-            
-            if (hit.collider != null)
-            {
-                WaterLand(hit.point, hit.collider);
-            }
+            TryWatering();
         }
     }
-    
-    
-    private void WaterLand(Vector2 position, Collider2D landCollider)
+
+    private bool CanWaterNow()
     {
-        lastWateringTime = Time.time;
+        return Time.time > lastWateringTime + wateringCooldown;
+    }
+
+    private void TryWatering()
+    {
+        Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, Mathf.Infinity, farmLandLayer);
         
-        // Проигрываем анимацию
-        animator.SetTrigger(wateringTrigger);
-        
-        // Запускаем частицы
+        if (hit.collider != null && farmGrid != null)
+        {
+            lastWateringTime = Time.time;
+            PlayWateringEffects(hit.point);
+            WaterTile(hit.point);
+        }
+    }
+
+    private void WaterTile(Vector2 worldPosition)
+    {
+        // Конвертируем мировые координаты в координаты сетки
+        Vector3 gridCenter = new Vector3(
+            (farmGrid.gridSizeX - 1) * farmGrid.cellSize * 0.5f,
+            (farmGrid.gridSizeY - 1) * farmGrid.cellSize * 0.5f,
+            0
+        );
+
+        // Вычисляем координаты тайла
+        int x = Mathf.RoundToInt((worldPosition.x + gridCenter.x) / farmGrid.cellSize);
+        int y = Mathf.RoundToInt((worldPosition.y + gridCenter.y) / farmGrid.cellSize);
+
+        // Изменяем состояние тайла
+        farmGrid.ChangeTileState(x, y, wateredColor);
+    }
+
+    private void PlayWateringEffects(Vector2 position)
+    {
         if (waterParticles != null)
         {
             waterParticles.transform.position = position;
             waterParticles.Play();
         }
         
-        // Поливаем землю (ищем FarmLand компонент)
-        FarmLand land = landCollider.GetComponent<FarmLand>();
-        if (land != null)
+        if (wateringSound != null)
         {
-            land.Water();
+            audioSource.PlayOneShot(wateringSound);
         }
     }
-    
-    public void SetSelected(bool selected)
+
+    private bool IsPointerOverUI()
     {
-        isSelected = selected;
-        
-        // Визуальная обратная связь
-        if (selected)
-        {
-            transform.localScale = Vector3.one * 1.1f;
-        }
-        else
-        {
-            transform.localScale = Vector3.one;
-        }
+        return EventSystem.current.IsPointerOverGameObject();
     }
 }
