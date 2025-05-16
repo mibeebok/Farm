@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1844177257681104809}
-  - component: {fileID: 8369362628735009813}
   - component: {fileID: 8481825647578055812}
   - component: {fileID: 4168609700062250477}
+  - component: {fileID: 161904418573830578}
+  - component: {fileID: 5761154321867227328}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Soil
@@ -34,21 +35,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8369362628735009813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2283374038678035875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db80b9036b61bb240a0bc78bd86c95ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isWatered: 0
-  dryColor: {r: 1, g: 1, b: 1, a: 1}
-  wateredColor: {r: 0.5, g: 0.8, b: 1, a: 1}
 --- !u!61 &8481825647578055812
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -150,3 +136,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &161904418573830578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2283374038678035875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db80b9036b61bb240a0bc78bd86c95ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWatered: 0
+  dryColor: {r: 1, g: 1, b: 1, a: 1}
+  wateredColor: {r: 0.5, g: 0.8, b: 1, a: 1}
+--- !u!114 &5761154321867227328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2283374038678035875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5db0f3b98426e4189bf58d669904d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalSprite: {fileID: 3316474154486840314, guid: 83db254a238e8aa41b38a36c82e71d07, type: 3}
+  plowedSprite: {fileID: 2068271482, guid: 7e3bdaa8ec4d133408a3982ec55eda7a, type: 3}
+  wateredSprite: {fileID: -552690664, guid: 7e3bdaa8ec4d133408a3982ec55eda7a, type: 3}
