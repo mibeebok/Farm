@@ -26,6 +26,22 @@ public class InventoryController : MonoBehaviour
     private Vector3 lastPlayerPosition;
     private GameObject currentDragItem;
     private int dragOriginSlot = -1;
+    public static InventoryController Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+    public void AddItem(Item item, int quantity = 1)
+    {
+        // Реализация добавления предмета в инвентарь
+        // Например:
+        if (item != null)
+        {
+            Debug.Log($"Added {quantity}x {item.name} to inventory");
+            // Здесь должна быть ваша логика добавления предмета
+        }
+    }
 
     void Start()
     {

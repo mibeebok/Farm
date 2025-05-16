@@ -36,6 +36,7 @@ public class WateringCanController : Sounds
 
         if (hit.collider != null && hit.collider.CompareTag("Soil"))
         {
+            PlaySound(sounds[0],volume: 0.3f, p1:0.9f, p2: 1.2f);
             // Запуск анимации полива
             if (handsAnimator != null && !isWatering)
             {
