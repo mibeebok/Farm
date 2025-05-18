@@ -49,6 +49,8 @@ public class WateringCanController : Sounds
             if (soil != null)
             {
                 StartCoroutine(soil.WaterWithDelay(soilWateringDelay));
+                StartCoroutine(soil.WaterWithDelay(soilWateringDelay));
+                SaveSystem.SaveAllTiles();
             }
         }
     }
@@ -57,7 +59,6 @@ public class WateringCanController : Sounds
     {
         isWatering = true;
 
-        // Ждём длину анимации (замени "Watering" на точное имя клипа)
         AnimationClip wateringClip = GetAnimationClipByName("Watering");
         float duration = wateringClip != null ? wateringClip.length : 1f;
 

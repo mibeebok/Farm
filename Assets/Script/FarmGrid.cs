@@ -1,71 +1,98 @@
 using UnityEngine;
+using System.Collections;
 
 public class FarmGrid : Sounds
 {
-    public int gridSizeX = 100; // Ширина карты в блоках
-    public int gridSizeY = 100; // Высота карты в блоках
-    public float cellSize = 2f; // Размер одного блока
-    public GameObject tilePrefab; // Префаб блока (квадрат или спрайт)
+   public static FarmGrid Instance { get; private set; } // Добавляем это
 
-    private GameObject[,] grid; // Двумерный массив блоков
+    [Header("Grid Settings")]
+    public int gridSizeX = 50;
+    public int gridSizeY = 50;
+    public float cellSize = 2f;
+    public GameObject tilePrefab;
+
+    private GameObject[,] grid;
+    public bool isGridGenerated = false;
+
+    private void Awake() // Добавляем метод Awake
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
 
     private void Start()
     {
         PlaySound(sounds[0], volume: 0.3f);
-        GenerateGrid();
+        GenerateGrid(() => {
+            SaveSystem.LoadAllTiles();
+        });
     }
-    public Vector2Int WorldToGridPosition(Vector3 worldPosition)
+    private void GenerateGrid(System.Action onComplete = null)
     {
-        int x = Mathf.FloorToInt(worldPosition.x / cellSize);
-        int y = Mathf.FloorToInt(worldPosition.y / cellSize);
-        return new Vector2Int(x, y);
-    }
+        if (tilePrefab == null)
+        {
+            Debug.LogError("Tile Prefab не назначен!");
+            return;
+        }
 
-    private void GenerateGrid()
-    {
         grid = new GameObject[gridSizeX, gridSizeY];
-
-        // Вычисляем центр карты
         Vector3 gridCenter = new Vector3(
             (gridSizeX - 1) * cellSize * 0.5f,
             (gridSizeY - 1) * cellSize * 0.5f,
             0
         );
 
+        StartCoroutine(GenerateGridCoroutine(gridCenter, onComplete));
+    }
+
+    private IEnumerator GenerateGridCoroutine(Vector3 center, System.Action onComplete)
+    {
         for (int x = 0; x < gridSizeX; x++)
         {
             for (int y = 0; y < gridSizeY; y++)
             {
-                // Создаем блок
                 GameObject tile = Instantiate(tilePrefab, transform);
-
-                // Вычисляем позицию блока относительно центра
-                Vector3 tilePosition = new Vector3(
-                    x * cellSize - gridCenter.x,
-                    y * cellSize - gridCenter.y,
+                tile.transform.position = new Vector3(
+                    x * cellSize - center.x,
+                    y * cellSize - center.y,
                     0
                 );
-
-                tile.transform.position = tilePosition;
                 tile.name = $"Tile_{x}_{y}";
-
-                // Сохраняем блок в массив
                 grid[x, y] = tile;
+
+                // Оптимизация: пропускаем кадр каждые 100 тайлов
+                if ((x * gridSizeY + y) % 100 == 0)
+                    yield return null;
             }
         }
+
+        isGridGenerated = true;
+        onComplete?.Invoke();
     }
 
-    // Метод для изменения состояния блока
-    public void ChangeTileState(int x, int y, Color newColor)
+    public Vector2Int WorldToGridPosition(Vector3 worldPosition)
     {
-        if (x >= 0 && x < gridSizeX && y >= 0 && y < gridSizeY)
+        return new Vector2Int(
+            Mathf.FloorToInt(worldPosition.x / cellSize + gridSizeX * 0.5f),
+            Mathf.FloorToInt(worldPosition.y / cellSize + gridSizeY * 0.5f)
+        );
+    }
+
+    public GameObject GetTileAt(Vector2Int gridPos)
+    {
+        if (gridPos.x >= 0 && gridPos.x < gridSizeX && 
+            gridPos.y >= 0 && gridPos.y < gridSizeY)
         {
-            SpriteRenderer renderer = grid[x, y].GetComponent<SpriteRenderer>();
-            if (renderer != null)
-            {
-                renderer.color = newColor;
-            }
+            return grid[gridPos.x, gridPos.y];
         }
+        return null;
     }
     public Vector2 GetGridBounds()
     {
