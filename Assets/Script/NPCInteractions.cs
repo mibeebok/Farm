@@ -1,10 +1,14 @@
 using UnityEngine;
-using UnityEngine.UI; // Для UI
+using UnityEngine.UI; 
 
 public class NPCInteraction : MonoBehaviour
 {
-    public GameObject TextE; // Сюда перетащи UI текст "Нажми E"
-    public GameObject dialogueBox; // Перетащи UI Image с PNG
+    public GameObject TextE; // В это поле в Unity вставляем наш гейм-объект с всплывающей подсказкой (текст)
+    public GameObject dialogueBox; // А сюда вставляем наше диалоговое окно, чтобы оно всплывало
+    public Sprite npcFace; // Здесь у нас будет храниться иконка с лицом наших NPC.
+    public Image NPCFaceImageUI; // Сюда подставляется наша png картинка лица NPC.
+    public string npcName; // Здесь будет храниться текстовое поле с именем NPC.
+    public Text npcNameTextUI; // Сюда подставляется имя NPC.
 
     private bool playerInRange = false;
 
@@ -13,6 +17,17 @@ public class NPCInteraction : MonoBehaviour
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
             dialogueBox.SetActive(true);
+            TextE.SetActive(false);
+
+            if (NPCFaceImageUI != null && npcFace != null)
+            {
+                NPCFaceImageUI.sprite = npcFace;
+            }
+
+            if (npcNameTextUI != null)
+            {
+                npcNameTextUI.text = npcName;
+            }
         }
     }
 
@@ -30,8 +45,8 @@ public class NPCInteraction : MonoBehaviour
     {
         if (other.GetComponent<Rigidbody2D>() != null)
         {
-            TextE.SetActive(false);
-            dialogueBox.SetActive(false); // Закрыть диалог при уходе
+            TextE.SetActive(false); // Всплывающая подсказка пропадает
+            dialogueBox.SetActive(false); // Диалог закрывается при уходе.
             playerInRange = false;
         }
     }
