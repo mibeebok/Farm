@@ -28,52 +28,35 @@ public class MattockController : Sounds
 
     void TryMattockSoil()
     {
-        if (inventoryController == null) return;
-        if (inventoryController.GetSelectedSlot() != 1) return;
-        Debug.Log("Выбран слот: " + inventoryController.GetSelectedSlot());
+        if (inventoryController == null || inventoryController.GetSelectedSlot() != 1) 
+            return;
 
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
 
         if (hit.collider != null)
         {
-            Transform tileTransform = hit.collider.transform;
+            // Ищем SoilTile в самом объекте или его родителях
+            SoilTile soilTile = hit.collider.GetComponent<SoilTile>() ?? 
+                            hit.collider.GetComponentInParent<SoilTile>();
 
-            // Проверка тега у родителя (FarmGrid > Tile)
-            if (tileTransform.CompareTag("Soil") || tileTransform.parent.CompareTag("Soil"))
+            if (soilTile != null)
             {
-                Debug.Log("Клик леврй кнопкой по земле (мотыга)!");
-
+                Debug.Log("Найдена земля для вспашки");
+                
+                // Запускаем анимацию
                 if (handsAnimator != null && !isMattock)
                 {
-                    Debug.Log("Анимация мотыги запускается.");
+                    PlaySound(sounds[0],volume: 0.3f, p1:0.9f, p2: 1.2f);
                     handsAnimator.SetBool(mattockBool, true);
                     StartCoroutine(ResetMattockBool());
                 }
 
-                SpriteRenderer renderer = tileTransform.GetComponent<SpriteRenderer>();
-                if (renderer != null && plowedSprite != null)
-                {
-                    Debug.Log("Меняем спрайт на вспаханный.");
-                    renderer.sprite = plowedSprite;
-                }
-                else
-                {
-                    Debug.LogWarning("SpriteRenderer или plowedSprite не найден.");
-                }
-                
+                // Взаимодействуем через метод Plow()
+                soilTile.Plow();
             }
-            else
-            {
-                Debug.Log("Объект не имеет тег Soil.");
-            }
-        }
-        else
-        {
-            Debug.Log("Ничего не попало под клик.");
         }
     }
-
     IEnumerator ResetMattockBool()
     {
         isMattock = true;

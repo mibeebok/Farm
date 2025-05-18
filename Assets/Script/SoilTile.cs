@@ -3,44 +3,33 @@ using System.Collections;
 
 public class SoilTile : MonoBehaviour
 {
+    [Header("Sprites")]
     public Sprite normalSprite;
     public Sprite plowedSprite;
     public Sprite wateredSprite;
 
     private SpriteRenderer spriteRenderer;
+    private bool isPlowed = false;
 
-    void Awake()
+    void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null)
-            Debug.LogError("SpriteRenderer не найден на " + gameObject.name);
+        {
+            spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+        }
+        
+        // Инициализация начального спрайта
+        spriteRenderer.sprite = normalSprite;
     }
 
     public void Plow()
     {
-        if (spriteRenderer != null && plowedSprite != null)
+        if (!isPlowed && plowedSprite != null)
         {
-            Debug.Log("Меняем спрайт на вспаханную землю.");
             spriteRenderer.sprite = plowedSprite;
-        }
-        else
-        {
-            Debug.LogWarning("Не удалось вспахать: spriteRenderer или plowedSprite отсутствует.");
-        }
-    }
-
-    public IEnumerator WaterWithDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        Water();
-    }
-
-    public void Water()
-    {
-        if (spriteRenderer != null && wateredSprite != null)
-        {
-            Debug.Log("Полив земли — меняем спрайт.");
-            spriteRenderer.sprite = wateredSprite;
+            isPlowed = true;
+            Debug.Log("Земля вспахана!");
         }
     }
 }
