@@ -1205,6 +1205,81 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 15.5, y: 8.3125}
   m_EdgeRadius: 0
+--- !u!1 &94391552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 94391553}
+  - component: {fileID: 94391555}
+  - component: {fileID: 94391554}
+  m_Layer: 0
+  m_Name: DialogueBackground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &94391553
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94391552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0000004351}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 800874416}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 3.71, y: -3.46}
+  m_SizeDelta: {x: 683.15, y: 201.74}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &94391554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94391552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 1034644365, guid: 0e808844c851223429d5f018d7c7a6ab, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &94391555
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94391552}
+  m_CullTransparentMesh: 1
 --- !u!1001 &101779115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1617,7 +1692,7 @@ GameObject:
   - component: {fileID: 133502646}
   - component: {fileID: 133502645}
   - component: {fileID: 133502648}
-  - component: {fileID: 133502647}
+  - component: {fileID: 133502650}
   m_Layer: 0
   m_Name: rabbit_0
   m_TagString: Untagged
@@ -1763,24 +1838,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.66488314, y: 0.37859082}
   m_EdgeRadius: 0
---- !u!114 &133502647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 133502642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 574b0abf36187d041bdbe9a317b5a45b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TextE: {fileID: 278152775}
-  dialogueBox: {fileID: 800874415}
-  npcFace: {fileID: -441955947, guid: 64888dfa16eae2e40babf388dd0fd894, type: 3}
-  NPCFaceImageUI: {fileID: 1667883899}
-  npcName: "\u0422\u0438\u043E\u043B\u0438"
-  npcNameTextUI: {fileID: 250034218}
 --- !u!58 &133502648
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1817,6 +1874,39 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0.004778981, y: 0.4996158}
   m_Radius: 1.2082838
+--- !u!114 &133502650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133502642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574b0abf36187d041bdbe9a317b5a45b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 859705588}
+  dialogueLines:
+  - text: "\u041F\u0440\u0438\u0432\u0435\u0442! \u042F \u0441\u043B\u044B\u0448\u0430\u043B,
+      \u0447\u0442\u043E \u0442\u044B \u043D\u043E\u0432\u0435\u043D\u044C\u043A\u0438\u0439,
+      \u0434\u0430\u0432\u0430\u0439 \u044F \u0442\u0435\u0431\u0435 \u0432\u0441\u0451
+      \u0437\u0434\u0435\u0441\u044C \u0440\u0430\u0441\u0441\u043A\u0430\u0436\u0443.
+      \u0414\u043B\u044F \u043D\u0430\u0447\u0430\u043B\u0430 \u0434\u0430\u0432\u0430\u0439
+      \u043F\u043E\u0437\u043D\u0430\u043A\u043E\u043C\u0438\u043C\u0441\u044F -
+      \u043C\u043E\u0451 \u0438\u043C\u044F \u0422\u0438\u043E\u043B\u0438, \u0430
+      \u0442\u0435\u0431\u044F \u043A\u0430\u043A \u0437\u043E\u0432\u0443\u0442?"
+    speakerName: "\u0422\u0438\u043E\u043B\u0438"
+    speakerFace: {fileID: -441955947, guid: 64888dfa16eae2e40babf388dd0fd894, type: 3}
+    isPlayer: 0
+  - text: "\u041F\u0440\u0438\u0432\u0435\u0442! \u0410 \u043C\u0435\u043D\u044F
+      \u0437\u043E\u0432\u0443\u0442 \u0413\u0440\u0438\u0448\u0430"
+    speakerName: "\u0413\u0440\u0438\u0448\u0430"
+    speakerFace: {fileID: -446666338, guid: e012a856e3f6e3a408f2e56fd1c01424, type: 3}
+    isPlayer: 1
+  TextE: {fileID: 278152775}
+  npcName: "\u0422\u0438\u043E\u043B\u0438"
+  npcFace: {fileID: -441955947, guid: 64888dfa16eae2e40babf388dd0fd894, type: 3}
 --- !u!1001 &140288221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2949,12 +3039,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 574b0abf36187d041bdbe9a317b5a45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 859705588}
+  dialogueLines:
+  - text: "\u0422\u0435\u043A\u0441\u0442 \u043D\u043F\u0441"
+    speakerName: "\u0418\u0445\u0432\u0438\u043B\u044C\u043D\u0438\u0445\u0442"
+    speakerFace: {fileID: 1936317233, guid: e8294318f3ab0c240aa4e86110f9c6fc, type: 3}
+    isPlayer: 0
+  - text: "\u0422\u0435\u043A\u0441\u0442 \u0438\u0433\u0440\u043E\u043A\u0430"
+    speakerName: "\u0413\u0440\u0438\u0448\u0430"
+    speakerFace: {fileID: -446666338, guid: e012a856e3f6e3a408f2e56fd1c01424, type: 3}
+    isPlayer: 1
   TextE: {fileID: 278152775}
-  dialogueBox: {fileID: 800874415}
-  npcFace: {fileID: 1936317233, guid: e8294318f3ab0c240aa4e86110f9c6fc, type: 3}
-  NPCFaceImageUI: {fileID: 1667883899}
   npcName: "\u0418\u0445\u0432\u0438\u043B\u044C\u043D\u0438\u0445\u0442"
-  npcNameTextUI: {fileID: 250034218}
+  npcFace: {fileID: 1936317233, guid: e8294318f3ab0c240aa4e86110f9c6fc, type: 3}
 --- !u!61 &234312152
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6943,12 +7040,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 574b0abf36187d041bdbe9a317b5a45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 859705588}
+  dialogueLines:
+  - text: "\u0422\u0435\u043A\u0441\u0442 \u043D\u043F\u0441"
+    speakerName: "\u0422\u0435\u0440\u0435\u043D\u0442\u0438\u0439"
+    speakerFace: {fileID: -353635825, guid: cae83baf7a5f0aa49a6bc8177e2b0de2, type: 3}
+    isPlayer: 0
+  - text: "\u0422\u0435\u043A\u0441\u0442 \u0438\u0433\u0440\u043E\u043A\u0430"
+    speakerName: "\u0413\u0440\u0438\u0448\u0430"
+    speakerFace: {fileID: -446666338, guid: e012a856e3f6e3a408f2e56fd1c01424, type: 3}
+    isPlayer: 1
   TextE: {fileID: 278152775}
-  dialogueBox: {fileID: 800874415}
-  npcFace: {fileID: -353635825, guid: cae83baf7a5f0aa49a6bc8177e2b0de2, type: 3}
-  NPCFaceImageUI: {fileID: 1667883899}
   npcName: "\u0422\u0435\u0440\u0435\u043D\u0442\u0438\u0439"
-  npcNameTextUI: {fileID: 250034218}
+  npcFace: {fileID: -353635825, guid: cae83baf7a5f0aa49a6bc8177e2b0de2, type: 3}
 --- !u!58 &613057805
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8681,15 +8785,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800874415}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.000027348247, y: -0.009909021, z: 0.002759788, w: 0.99994713}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 94391553}
   - {fileID: 1667883898}
   - {fileID: 250034217}
+  - {fileID: 1142447406}
   m_Father: {fileID: 1157665274}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.006, y: -1.135, z: 0.316}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.44, y: -183.73}
@@ -8702,7 +8808,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800874415}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -8715,7 +8821,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1034644365, guid: 0e808844c851223429d5f018d7c7a6ab, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9246,6 +9352,59 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d43caa1d4bc82be4883a1cedb22b54e3, type: 3}
+--- !u!1 &859705586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 859705587}
+  - component: {fileID: 859705588}
+  m_Layer: 0
+  m_Name: ForDialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &859705587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859705586}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.533223, y: 2.5216138, z: 45426.066}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &859705588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859705586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7d95efd19806d74786cfea55fb6891a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 800874415}
+  dialogueBackgroundImage: {fileID: 94391554}
+  faceImage: {fileID: 1667883899}
+  nameText: {fileID: 250034218}
+  dialogueText: {fileID: 1142447407}
+  npcDialogueSprite: {fileID: 1034644365, guid: 0e808844c851223429d5f018d7c7a6ab, type: 3}
+  playerDialogueSprite: {fileID: -1934425159, guid: 532a26fd513c4144fa441a3a3947af25, type: 3}
+  playerFace: {fileID: -446666338, guid: e012a856e3f6e3a408f2e56fd1c01424, type: 3}
+  playerName: "\u0413\u0440\u0438\u0448\u0430"
 --- !u!1001 &868995564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12537,6 +12696,85 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 056877ecbe9d1a049a3c11fad28e9574, type: 3}
+--- !u!1 &1142447405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1142447406}
+  - component: {fileID: 1142447408}
+  - component: {fileID: 1142447407}
+  m_Layer: 0
+  m_Name: DialogueText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1142447406
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142447405}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000088349}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 800874416}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -57.58, y: -3.46}
+  m_SizeDelta: {x: 442.44, y: 104.88}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1142447407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142447405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.9245283, g: 0.8940014, b: 0.8940014, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 18
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &1142447408
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142447405}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1143718812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23996,12 +24234,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 574b0abf36187d041bdbe9a317b5a45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 859705588}
+  dialogueLines:
+  - text: "\u0422\u0435\u043A\u0441\u0442 \u043D\u043F\u0441"
+    speakerName: "\u0424\u0438\u043D\u043D\u0438\u043A"
+    speakerFace: {fileID: 176863166, guid: 4b025bfa0a7e8554ea5a91c39b1992fa, type: 3}
+    isPlayer: 0
+  - text: "\u0422\u0435\u043A\u0441\u0442 \u0438\u0433\u0440\u043E\u043A\u0430"
+    speakerName: "\u0413\u0440\u0438\u0448\u0430"
+    speakerFace: {fileID: -446666338, guid: e012a856e3f6e3a408f2e56fd1c01424, type: 3}
+    isPlayer: 1
   TextE: {fileID: 278152775}
-  dialogueBox: {fileID: 800874415}
-  npcFace: {fileID: 176863166, guid: 4b025bfa0a7e8554ea5a91c39b1992fa, type: 3}
-  NPCFaceImageUI: {fileID: 1667883899}
   npcName: "\u0424\u0438\u043D\u043D\u0438\u043A"
-  npcNameTextUI: {fileID: 250034218}
+  npcFace: {fileID: 176863166, guid: 4b025bfa0a7e8554ea5a91c39b1992fa, type: 3}
 --- !u!58 &2128732980
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -25989,3 +26234,4 @@ SceneRoots:
   - {fileID: 613057801}
   - {fileID: 1069587784}
   - {fileID: 1157665274}
+  - {fileID: 859705587}

@@ -1,14 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; 
 
 public class NPCInteraction : MonoBehaviour
 {
-    public GameObject TextE; // В это поле в Unity вставляем наш гейм-объект с всплывающей подсказкой (текст)
-    public GameObject dialogueBox; // А сюда вставляем наше диалоговое окно, чтобы оно всплывало
-    public Sprite npcFace; // Здесь у нас будет храниться иконка с лицом наших NPC.
-    public Image NPCFaceImageUI; // Сюда подставляется наша png картинка лица NPC.
-    public string npcName; // Здесь будет храниться текстовое поле с именем NPC.
-    public Text npcNameTextUI; // Сюда подставляется имя NPC.
+    public DialogueManager dialogueManager;
+    public List<DialogueLine> dialogueLines;
+
+    public GameObject TextE; // Подсказка "нажми E"
+
+    public string npcName;       // Имя NPC
+    public Sprite npcFace;       // Лицо NPC
 
     private bool playerInRange = false;
 
@@ -16,18 +17,10 @@ public class NPCInteraction : MonoBehaviour
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            dialogueBox.SetActive(true);
             TextE.SetActive(false);
 
-            if (NPCFaceImageUI != null && npcFace != null)
-            {
-                NPCFaceImageUI.sprite = npcFace;
-            }
-
-            if (npcNameTextUI != null)
-            {
-                npcNameTextUI.text = npcName;
-            }
+            // Передаём все нужные данные в диалоговый менеджер
+            dialogueManager.StartDialogue(dialogueLines, npcName, npcFace);
         }
     }
 
@@ -35,7 +28,6 @@ public class NPCInteraction : MonoBehaviour
     {
         if (other.GetComponent<Rigidbody2D>() != null)
         {
-            Debug.Log("Игрок вошёл в зону NPC");
             TextE.SetActive(true);
             playerInRange = true;
         }
@@ -45,9 +37,10 @@ public class NPCInteraction : MonoBehaviour
     {
         if (other.GetComponent<Rigidbody2D>() != null)
         {
-            TextE.SetActive(false); // Всплывающая подсказка пропадает
-            dialogueBox.SetActive(false); // Диалог закрывается при уходе.
+            TextE.SetActive(false);
+            dialogueManager.EndDialogue(); // прячем диалог, если вышли из зоны
             playerInRange = false;
         }
     }
+
 }

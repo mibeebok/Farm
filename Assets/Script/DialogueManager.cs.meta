@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: b7d95efd19806d74786cfea55fb6891a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - dialogueBox: {instanceID: 0}
+  - dialogueBackgroundImage: {instanceID: 0}
+  - npcDialogueSprite: {fileID: 1034644365, guid: 0e808844c851223429d5f018d7c7a6ab, type: 3}
+  - playerDialogueSprite: {fileID: -1934425159, guid: 532a26fd513c4144fa441a3a3947af25, type: 3}
+  - faceImage: {instanceID: 0}
+  - nameText: {instanceID: 0}
+  - dialogueText: {instanceID: 0}
+  - playerFace: {fileID: 520329608, guid: e012a856e3f6e3a408f2e56fd1c01424, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
