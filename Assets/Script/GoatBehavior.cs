@@ -3,18 +3,23 @@ using UnityEngine;
 public class GoatBehavior : Sounds
 {
     [Header("Detection Settings")]
-    [SerializeField] private float detectionRadius = 5f; // Радиус обнаружения игрока
-    [SerializeField] private float soundPlayRadius = 3f; // Радиус для воспроизведения звука
+    [SerializeField] private float detectionRadius = 5f;
+    [SerializeField] private float soundPlayRadius = 3f;
     [SerializeField] private LayerMask playerLayer;
     
     [Header("Sound Settings")]
-    [SerializeField] private float playInterval = 6f; // Интервал между звуками
-    [SerializeField] private float minVolume = 0.1f; // Минимальная громкость
-    [SerializeField] private float maxVolume = 0.3f; // Максимальная громкость
+    [SerializeField] private float playInterval = 6f;
+    [SerializeField] private float minVolume = 0.1f;
+    [SerializeField] private float maxVolume = 0.3f;
     
     [Header("Animation Settings")]
     [SerializeField] private Animator goatAnimator;
     [SerializeField] private string scaredParameter = "IsScared";
+    
+    [Header("Respawn Settings")] 
+    [SerializeField] private Vector2 spawnAreaMin; // Минимальные координаты зоны спавна
+    [SerializeField] private Vector2 spawnAreaMax; // Максимальные координаты зоны спавна
+    [SerializeField] private float minDistanceFromPlayer = 10f; // Минимальное расстояние от игрока
     
     private Transform player;
     private bool isPlayerNear;
@@ -32,28 +37,32 @@ public class GoatBehavior : Sounds
                 Debug.LogError("У козы не установлена анимация!");
             }
         }
+
+        // Подписываемся на событие нового дня
+        HouseController.OnNewDay += RespawnGoat;
     }
-    
+
+    private void OnDestroy()
+    {
+        // Отписываемся при уничтожении объекта
+        HouseController.OnNewDay -= RespawnGoat;
+    }
+
     private void Update()
     {
         if (player == null) return;
 
-        // Проверяем расстояние до игрока
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         isPlayerNear = distanceToPlayer <= detectionRadius;
         
-        // Управляем анимацией
         goatAnimator.SetBool(scaredParameter, isPlayerNear);
 
-        // Логика воспроизведения звука
         time += Time.deltaTime;
         
         if (time >= playInterval)
         {
-            // Проверяем, находится ли игрок в радиусе звука
             if (distanceToPlayer <= soundPlayRadius)
             {
-                // Рассчитываем громкость в зависимости от расстояния (чем ближе - тем громче)
                 float volume = Mathf.Lerp(maxVolume, minVolume, 
                                        distanceToPlayer / soundPlayRadius);
                 
@@ -62,17 +71,49 @@ public class GoatBehavior : Sounds
             time = 0;
         }
     }
-    
-    // Визуализация радиусов в редакторе
+
+    private void RespawnGoat()
+    {
+        Vector2 newPosition;
+        int attempts = 0;
+        const int maxAttempts = 10;
+
+        do
+        {
+            // Генерируем случайную позицию в заданной области
+            newPosition = new Vector2(
+                Random.Range(spawnAreaMin.x, spawnAreaMax.x),
+                Random.Range(spawnAreaMin.y, spawnAreaMax.y)
+            );
+
+            attempts++;
+            
+            // Проверяем, чтобы коза не появилась слишком близко к игроку
+            if (attempts >= maxAttempts || 
+                Vector2.Distance(newPosition, player.position) >= minDistanceFromPlayer)
+            {
+                break;
+            }
+            
+        } while (true);
+
+        transform.position = newPosition;
+        Debug.Log($"Коза переместилась на новую позицию: {newPosition}");
+    }
+
     private void OnDrawGizmosSelected()
     {
-        // Радиус обнаружения (желтый)
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
         
-        // Радиус звука (зеленый)
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, soundPlayRadius);
+        
+        // Визуализация зоны спавна
+        Gizmos.color = new Color(1, 0.5f, 0, 0.3f);
+        Vector3 center = (spawnAreaMin + spawnAreaMax) / 2;
+        Vector3 size = spawnAreaMax - spawnAreaMin;
+        Gizmos.DrawCube(center, size);
     }
 
     public void GoatScared()

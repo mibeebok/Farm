@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -19,6 +20,7 @@ public class HouseController : MonoBehaviour
     private bool isInteractable = true;
     private const string DaysPassedKey = "DaysPassed";
     private SleepController sleepController;
+    public static event Action OnNewDay;
 
     public static int DaysPassed
     {
@@ -103,9 +105,12 @@ public class HouseController : MonoBehaviour
         if (doorAnimator)
             doorAnimator.SetBool(doorBoolParameter, false);
 
-        // Увеличиваем счетчик дней
+         // Увеличиваем счетчик дней
         DaysPassed++;
         Debug.Log($"Всего дней: {DaysPassed}");
+        
+        // Уведомляем о новом дне
+        OnNewDay?.Invoke();
 
         isInteractable = true;
     }

@@ -54,6 +54,7 @@ public class MattockController : Sounds
 
                 // Взаимодействуем через метод Plow()
                 soilTile.Plow();
+                SaveSystem.SaveAllTiles();
             }
         }
     }
