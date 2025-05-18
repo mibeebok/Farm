@@ -4,7 +4,7 @@ public class FarmGrid : Sounds
 {
     public int gridSizeX = 100; // Ширина карты в блоках
     public int gridSizeY = 100; // Высота карты в блоках
-    public float cellSize = 1f; // Размер одного блока
+    public float cellSize = 2f; // Размер одного блока
     public GameObject tilePrefab; // Префаб блока (квадрат или спрайт)
 
     private GameObject[,] grid; // Двумерный массив блоков
@@ -13,6 +13,12 @@ public class FarmGrid : Sounds
     {
         PlaySound(sounds[0], volume: 0.3f);
         GenerateGrid();
+    }
+    public Vector2Int WorldToGridPosition(Vector3 worldPosition)
+    {
+        int x = Mathf.FloorToInt(worldPosition.x / cellSize);
+        int y = Mathf.FloorToInt(worldPosition.y / cellSize);
+        return new Vector2Int(x, y);
     }
 
     private void GenerateGrid()
