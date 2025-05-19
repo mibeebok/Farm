@@ -16,9 +16,6 @@ sysinfo.txt
 *.unitypackage
 crashlytics-build.properties
 
-# НЕ игнорируем .meta-файлы! (очень важно)
-# *.meta <-- ЭТУ СТРОКУ НУЖНО УДАЛИТЬ ИЛИ ЗАКОММЕНТИРОВАТЬ
-
 # Автогенерируемые файлы IDE (можно игнорировать)
 .vs/
 .gradle/
