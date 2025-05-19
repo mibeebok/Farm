@@ -1,4 +1,4 @@
-# Игнорируем временные файлы и кэш
+# Игнорировать только временные файлы
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -6,32 +6,3 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
-
-# Игнорируем большие/ненужные файлы
-/[Mm]emoryCaptures/
-/[Rr]ecordings/
-sysinfo.txt
-*.apk
-*.aab
-*.unitypackage
-crashlytics-build.properties
-
-# Автогенерируемые файлы IDE (можно игнорировать)
-.vs/
-.gradle/
-ExportedObj/
-.consulo/
-*.csproj
-*.unityproj
-*.sln
-*.suo
-*.tmp
-*.user
-*.userprefs
-*.pidb
-*.booproj
-*.svd
-*.pdb
-*.mdb
-*.opendb
-*.VC.db
