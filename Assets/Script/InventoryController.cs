@@ -45,8 +45,12 @@ public class InventoryController : MonoBehaviour
 
     void Start()
     {
+         SelectSlot(0); // Принудительно активируем первый слот
+    
         InitializeHotbar();
         UpdateSlotVisuals();
+        if (fullInventoryUI != null)
+            fullInventoryUI.SetActive(false);
 
         if (fullInventoryUI != null)
             fullInventoryUI.SetActive(false);
@@ -86,18 +90,29 @@ public class InventoryController : MonoBehaviour
 
     void HandleInput()
     {
+        if (Input.GetKeyDown(KeyCode.Tab)) // Добавьте альтернативную клавишу
+        {
+            ToggleInventory();
+            return;
+        }
+
+        // Затем обработка слотов
+        if (!isInventoryOpen)
+        {
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
+            if (scroll != 0)
+                SelectSlot((currentSlot + (scroll > 0 ? -1 : 1) + hotbarSize) % hotbarSize);
+
+            for (int i = 0; i < hotbarSize; i++)
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+                    SelectSlot(i);
+            }
+        }
+        
+        // Отдельная обработка кликов
         if (Input.GetMouseButtonDown(0))
             HandleMouseClick();
-
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (scroll != 0 && !isInventoryOpen)
-            SelectSlot((currentSlot + (scroll > 0 ? -1 : 1) + hotbarSize) % hotbarSize);
-
-        for (int i = 0; i < hotbarSize; i++)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1 + i) && !isInventoryOpen)
-                SelectSlot(i);
-        }
     }
 
     void HandlePlayerMovement()
@@ -111,25 +126,33 @@ public class InventoryController : MonoBehaviour
     }
 
     void HandleMouseClick()
-    {
-        if (currentDragItem != null) return;
+{
+    if (currentDragItem != null) return;
 
-        RaycastHit2D hit = GetRaycastHitAtMouse();
-        if (hit.collider != null)
+    RaycastHit2D hit = GetRaycastHitAtMouse();
+    if (hit.collider != null)
+    {
+        
+        for (int i = 0; i < slotRenderers.Length; i++)
         {
-            for (int i = 0; i < slotRenderers.Length; i++)
+            if (slotRenderers[i] != null && hit.collider.gameObject == slotRenderers[i].gameObject)
             {
-                if (slotRenderers[i] != null && hit.collider.gameObject == slotRenderers[i].gameObject)
+                Debug.Log($"Slot {i} clicked"); // Отладочное сообщение
+                
+                if (i == hotbarSize)
                 {
-                    if (i == hotbarSize)
-                        ToggleInventory();
-                    else
-                        SelectSlot(i);
-                    break;
+                    Debug.Log("Toggling inventory"); // Должно появиться при клике
+                    ToggleInventory();
                 }
+                else
+                {
+                    SelectSlot(i);
+                }
+                break;
             }
         }
     }
+}
 
     void HandleDragAndDrop()
     {
@@ -282,7 +305,13 @@ public class InventoryController : MonoBehaviour
     RaycastHit2D GetRaycastHitAtMouse()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        return Physics2D.Raycast(mousePos, Vector2.zero);
+        
+        // Добавляем маску слоёв и максимальное расстояние
+        int layerMask = LayerMask.GetMask("Hotbar"); // Создайте отдельный слой для хотбара
+        float distance = 10f;
+        
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, distance, layerMask);  
+        return hit;
     }
 
     Item GetItemInSlot(int slotIndex)
