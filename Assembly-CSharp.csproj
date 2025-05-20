@@ -89,6 +89,7 @@
     <Compile Include="Assets\Script\MattockController.cs" />
     <Compile Include="Assets\Script\FarmGrid.cs" />
     <Compile Include="Assets\Script\Plants\CropsManager.cs" />
+    <Compile Include="Assets\Script\ExitCenter.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\GoatBehavior.cs" />
     <Compile Include="Assets\Script\Plants\CropsReadController.cs" />
