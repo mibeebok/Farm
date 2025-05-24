@@ -74,6 +74,7 @@
     <Compile Include="Assets\Script\SavePosition.cs" />
     <Compile Include="Assets\Script\SoilTile.cs" />
     <Compile Include="Assets\Script\FullInventory.cs" />
+    <Compile Include="Assets\Script\InventoryManager.cs" />
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\HouseController.cs" />
     <Compile Include="Assets\Script\Plants\Beetroot.cs" />

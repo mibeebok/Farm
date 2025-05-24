@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 979f6e19f3af4b1439ff239d86f7080e, type: 3}
   m_Name: SeedPotato
   m_EditorClassIdentifier: Assembly-CSharp::Seed
   cropType: 1
@@ -19,7 +19,7 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   timeRemaining: 0
   timerIsRunning: 0
-  currentGrowthStage: 3
+  currentGrowthStage: 0
   growthStages:
   - {fileID: 11400000, guid: 725df4fd3ca5dbd4388d3981d5b21937, type: 2}
   - {fileID: 11400000, guid: 045caa01b02544a448a9a1a40c3cafb9, type: 2}
@@ -32,5 +32,3 @@ MonoBehaviour:
     type: 1
     cropType: 1
   harvestYield: 1
-  growthTime: 120
-  waterRequirement: 1

@@ -22,7 +22,7 @@ public class DataBase : MonoBehaviour
     public static DataBase Instance { get; private set; }
 
     public List<Item> items = new List<Item>();
-    
+
     // Добавьте эти списки
     public List<Seed> seeds = new List<Seed>();
     public List<Vegetable> vegetables = new List<Vegetable>();
@@ -65,10 +65,16 @@ public class DataBase : MonoBehaviour
 
     public Item GetItemById(int id)
     {
-        foreach(Item item in items)
+        foreach (Item item in items)
         {
-            if(item.id == id) return item;
+            if (item.id == id) return item;
         }
         return null;
+    }
+    public Item GetItemByCropType(CropType type, bool isSeed)
+    {
+        return items.Find(item => 
+            item.cropType == type && 
+            item.type == (isSeed ? ItemType.Seed : ItemType.Vegetable));
     }
 }
