@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Tilemaps;
 
 public class FarmGrid : Sounds
 {
@@ -50,6 +51,17 @@ public class FarmGrid : Sounds
         );
 
         StartCoroutine(GenerateGridCoroutine(gridCenter, onComplete));
+    }
+    public Vector3 GridToWorldPosition(Vector2Int gridPosition)
+    {
+        // Если вы используете Tilemap
+        if (TryGetComponent<Tilemap>(out var tilemap))
+        {
+            return tilemap.GetCellCenterWorld(new Vector3Int(gridPosition.x, gridPosition.y, 0));
+        }
+        
+        // Если вы используете обычную сетку
+        return new Vector3(gridPosition.x, gridPosition.y, 0);
     }
 
     private IEnumerator GenerateGridCoroutine(Vector3 center, System.Action onComplete)

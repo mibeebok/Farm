@@ -34,24 +34,42 @@ public class CropsManager : MonoBehaviour
                !allCrops.ContainsKey(gridPosition);
     }
     public bool TryPlantSeed(Item seedItem, Vector2 worldPosition)
-{
-    if (!seedItem.IsSeed()) return false;
-    
-    Seed seed = DataBase.Instance.GetSeed(seedItem.cropType);
-    if (seed == null) return false;
+    {
+        if (!seedItem.IsSeed()) 
+        {
+            Debug.Log("Предмет не является семенами");
+            return false;
+        }
+        
+        Vector2Int gridPos = FarmGrid.Instance.WorldToGridPosition(worldPosition);
+        
+        if (!CanPlantAt(gridPos))
+        {
+            Debug.Log($"Нельзя посадить здесь. Готова ли почва: {FarmGrid.Instance.GetTileAt(gridPos)?.GetComponent<SoilTile>()?.IsReadyForPlanting()}");
+            return false;
+        }
 
-    Vector2Int gridPos = FarmGrid.Instance.WorldToGridPosition(worldPosition);
-    GameObject tileObj = FarmGrid.Instance.GetTileAt(gridPos);
-    
-    // Создаем копию Seed SO
-    Seed newSeed = Instantiate(seed);
-    newSeed.Initialize(new Vector3Int(gridPos.x, gridPos.y, 0), seed.growthTime);
-    
-    // Сохраняем в словарь
-    allCrops[gridPos] = newSeed;
-    
-    return true;
-}
+        Crop cropPrefab = GetCropPrefab(seedItem.cropType);
+        if (cropPrefab == null)
+        {
+            Debug.Log($"Не найден префаб для {seedItem.cropType}");
+            return false;
+        }
+
+        // Создаем растение
+        Crop newCrop = Instantiate(cropPrefab, 
+            FarmGrid.Instance.GridToWorldPosition(gridPos), 
+            Quaternion.identity);
+        
+        // Сохраняем растение
+        allCrops[gridPos] = newCrop;
+        
+        // Сбрасываем состояние почвы
+        FarmGrid.Instance.GetTileAt(gridPos)?.GetComponent<SoilTile>()?.ResetAfterPlanting();
+        
+        Debug.Log($"Посажено: {seedItem.name} на позиции {gridPos}");
+        return true;
+    }
 
     public bool PlantCrop(Vector2Int gridPosition, CropType cropType)
     {

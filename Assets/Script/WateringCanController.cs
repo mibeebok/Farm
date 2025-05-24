@@ -26,33 +26,39 @@ public class WateringCanController : Sounds
     void TryWaterSoil()
     {
         if (inventoryController == null) return;
-
-        // Только если выбран слот 0 (с лейкой)
         if (inventoryController.GetSelectedSlot() != 0) return;
 
-        // Проверка попадания по земле
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
 
-        if (hit.collider != null && hit.collider.CompareTag("Soil"))
+        if (hit.collider != null)
         {
-            PlaySound(sounds[0],volume: 0.3f, p1:0.9f, p2: 1.2f);
-            // Запуск анимации полива
-            if (handsAnimator != null && !isWatering)
+            SoilTile soilTile = hit.collider.GetComponent<SoilTile>();
+            if (soilTile != null && soilTile.isPlowed)
             {
-                handsAnimator.SetBool(wateringBool, true);
-                StartCoroutine(ResetWateringBool());
-            }
+                PlaySound(sounds[0], volume: 0.3f, p1: 0.9f, p2: 1.2f);
+                
+                if (handsAnimator != null && !isWatering)
+                {
+                    handsAnimator.SetBool(wateringBool, true);
+                    StartCoroutine(ResetWateringBool());
+                }
 
-            // Полив земли с задержкой
-            SoilTileWateringCan soil = hit.collider.GetComponent<SoilTileWateringCan>();
-            if (soil != null)
-            {
-                StartCoroutine(soil.WaterWithDelay(soilWateringDelay));
-                StartCoroutine(soil.WaterWithDelay(soilWateringDelay));
-                SaveSystem.SaveAllTiles();
+                SoilTileWateringCan soilWater = hit.collider.GetComponent<SoilTileWateringCan>();
+                if (soilWater != null)
+                {
+                    StartCoroutine(DelayedWatering(soilWater, soilTile));
+                }
             }
         }
+    }
+
+    IEnumerator DelayedWatering(SoilTileWateringCan soilWater, SoilTile soilTile)
+    {
+        yield return new WaitForSeconds(soilWateringDelay);
+        soilWater.Water();
+        soilTile.UpdateSoilSprite(); // Явное обновление спрайта
+        SaveSystem.SaveAllTiles();
     }
 
     IEnumerator ResetWateringBool()

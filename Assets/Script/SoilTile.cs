@@ -8,9 +8,38 @@ public class SoilTile : MonoBehaviour
     public Sprite plowedSprite;
     public Sprite wateredSprite;
 
-    private SpriteRenderer spriteRenderer;
-    private bool isPlowed = false;
+    public SpriteRenderer spriteRenderer;
+    public bool isPlowed = false;
+
     private SoilTileWateringCan wateringCan;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            Debug.Log($"Состояние: Вспахана={isPlowed}, Полита={GetComponent<SoilTileWateringCan>()?.isWatered}");
+            Debug.Log($"Текущий спрайт: {spriteRenderer.sprite?.name}");
+        }
+    }
+
+    public void UpdateSoilSprite()
+    {
+        var wateringCan = GetComponent<SoilTileWateringCan>();
+        if (wateringCan == null) return;
+
+        if (wateringCan.isWatered && wateredSprite != null)
+        {
+            spriteRenderer.sprite = wateredSprite;
+        }
+        else if (isPlowed && plowedSprite != null)
+        {
+            spriteRenderer.sprite = plowedSprite;
+        }
+        else
+        {
+            spriteRenderer.sprite = normalSprite;
+        }
+    }
 
     private void Awake()
     {
@@ -57,10 +86,14 @@ public class SoilTile : MonoBehaviour
     }
     public void Water()
     {
-        if (isPlowed && wateringCan != null)
+        if (isPlowed)
         {
-            wateringCan.Water();
-            spriteRenderer.sprite = wateredSprite;
+            var wateringCan = GetComponent<SoilTileWateringCan>();
+            if (wateringCan != null)
+            {
+                wateringCan.Water();
+                // Не устанавливаем спрайт здесь - это делает SoilTileWateringCan
+            }
         }
     }
 

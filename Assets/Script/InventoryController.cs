@@ -32,20 +32,40 @@ public class InventoryController : MonoBehaviour
     {
         Instance = this;
     }
-    public void AddItem(Item item, int quantity = 1)
+    public bool AddItem(Item item, int quantity = 1)
     {
-        // Реализация добавления предмета в инвентарь
-        if (item != null)
+        if (item == null || item.id == 0 || quantity <= 0) 
+            return false;
+
+        // Пропускаем первые 2 слота (инструменты)
+        for (int i = 2; i < mainInventory.items.Count; i++)
         {
-            Debug.Log($"Added {quantity}x {item.name} to inventory");
-            // Здесь должна быть ваша логика добавления предмета
+            // Если слот пуст
+            if (mainInventory.items[i].id == 0)
+            {
+                mainInventory.items[i].id = item.id;
+                mainInventory.items[i].count = quantity;
+                UpdateSlotVisuals();
+                return true;
+            }
+            // Если предмет такой же и можно стакать
+            else if (mainInventory.items[i].id == item.id && 
+                    mainInventory.items[i].count < item.maxStack)
+            {
+                mainInventory.items[i].count += quantity;
+                UpdateSlotVisuals();
+                return true;
+            }
         }
+
+        Debug.LogWarning("Нет свободных слотов в инвентаре!");
+        return false;
     }
 
     void Start()
     {
-         SelectSlot(0); // Принудительно активируем первый слот
-    
+        SelectSlot(0); // Принудительно активируем первый слот
+
         InitializeHotbar();
         UpdateSlotVisuals();
         if (fullInventoryUI != null)
@@ -56,7 +76,30 @@ public class InventoryController : MonoBehaviour
 
         if (player != null)
             lastPlayerPosition = player.position;
+
+
+
+        CheckDatabase();
     }
+void CheckDatabase()
+{
+    Debug.Log("=== Проверка базы данных ===");
+    foreach (Item item in database.items)
+    {
+        Debug.Log($"ID: {item.id}, Name: {item.name}, Type: {item.GetType()}");
+    }
+    
+    // Проверка конкретно картошки
+    Item potato = database.GetItemById(7); // Замените на ваш ID
+    if (potato != null)
+    {
+        Debug.Log($"Картошка найдена: {potato.name} (ID: {potato.id})");
+    }
+    else
+    {
+        Debug.LogError("Картошка не найдена в базе!");
+    }
+}
 
     void Update()
     {

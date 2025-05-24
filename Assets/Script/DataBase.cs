@@ -73,8 +73,20 @@ public class DataBase : MonoBehaviour
     }
     public Item GetItemByCropType(CropType type, bool isSeed)
     {
-        return items.Find(item => 
-            item.cropType == type && 
+        return items.Find(item =>
+            item.cropType == type &&
             item.type == (isSeed ? ItemType.Seed : ItemType.Vegetable));
+    }
+    void Start()
+    {
+        DebugAllItems();
+    }
+    public void DebugAllItems()
+    {
+        Debug.Log("=== Все предметы в базе ===");
+        foreach (Item item in items)
+        {
+            Debug.Log($"ID: {item.id}, Name: {item.name}, Type: {item.type}, CropType: {item.cropType}");
+        }
     }
 }

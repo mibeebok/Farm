@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 744fd93d2cf2cc74e81a7532dc8efb65, type: 3}
   m_Name: SeedCarrot
   m_EditorClassIdentifier: Assembly-CSharp::Seed
   cropType: 2
@@ -21,16 +21,14 @@ MonoBehaviour:
   timerIsRunning: 0
   currentGrowthStage: 0
   growthStages:
-  - {fileID: 11400000, guid: 3ca72ba85049243418471df016b93fb0, type: 2}
-  - {fileID: 11400000, guid: a6a8337bc99f6c84ca137ac11bf14c1f, type: 2}
-  - {fileID: 11400000, guid: 0106c83f2ecf10246a702169201a69e9, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   harvestItem:
     id: 6
     name: carrot
     img: {fileID: 1194125170, guid: 4a90f5883805ed74e80473f50bc71c84, type: 3}
-    maxStack: 16
+    maxStack: 15
     type: 1
     cropType: 2
   harvestYield: 1
-  growthTime: 120
-  waterRequirement: 1

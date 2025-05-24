@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 0f7168448836c11498ca367a763dad83, type: 3}
   m_Name: Beetroot
   m_EditorClassIdentifier: Assembly-CSharp::Vegetable
   cropType: 3
@@ -28,9 +28,7 @@ MonoBehaviour:
     id: 4
     name: beetroot
     img: {fileID: 1295730968, guid: 4a90f5883805ed74e80473f50bc71c84, type: 3}
-    maxStack: 26
+    maxStack: 16
     type: 1
     cropType: 3
   harvestYield: 1
-  sellPrice: 10
-  nutritionValue: 1

@@ -9,17 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 7c5d63d4984c69f47baf60b3c016d0d8, type: 3}
   m_Name: SeedsRastberry
   m_EditorClassIdentifier: Assembly-CSharp::Seed
-  cropType: 0
+  cropType: 4
   isSeed: 1
-  icon: {fileID: -263092375, guid: 4a90f5883805ed74e80473f50bc71c84, type: 3}
+  icon: {fileID: -123065442, guid: 4a90f5883805ed74e80473f50bc71c84, type: 3}
   maxStack: 32
   position: {x: 0, y: 0, z: 0}
   timeRemaining: 0
   timerIsRunning: 0
-  currentGrowthStage: 0
+  currentGrowthStage: 3
   growthStages:
   - {fileID: 11400000, guid: 7037197c6eec6504e836898b5069d34c, type: 2}
   - {fileID: 11400000, guid: 8c0f1771f9fb01048a431a0acf6119bb, type: 2}
@@ -32,5 +32,3 @@ MonoBehaviour:
     type: 1
     cropType: 4
   harvestYield: 1
-  growthTime: 120
-  waterRequirement: 1

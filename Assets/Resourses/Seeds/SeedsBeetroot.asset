@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 0f7168448836c11498ca367a763dad83, type: 3}
   m_Name: SeedsBeetroot
   m_EditorClassIdentifier: Assembly-CSharp::Vegetable
   cropType: 3
   isSeed: 1
   icon: {fileID: -1787963891, guid: 4a90f5883805ed74e80473f50bc71c84, type: 3}
-  maxStack: 16
+  maxStack: 32
   position: {x: 0, y: 0, z: 0}
   timeRemaining: 0
   timerIsRunning: 0
@@ -32,5 +32,3 @@ MonoBehaviour:
     type: 1
     cropType: 3
   harvestYield: 1
-  sellPrice: 10
-  nutritionValue: 1

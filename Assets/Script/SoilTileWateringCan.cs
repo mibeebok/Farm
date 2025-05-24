@@ -17,8 +17,16 @@ public class SoilTileWateringCan : MonoBehaviour
     public void Water()
     {
         if (isWatered) return;
+        
         isWatered = true;
         UpdateVisual();
+        
+        // Убедимся, что SoilTile знает о поливе
+        SoilTile soilTile = GetComponent<SoilTile>();
+        if (soilTile != null && soilTile.wateredSprite != null)
+        {
+            soilTile.spriteRenderer.sprite = soilTile.wateredSprite;
+        }
     }
 
     public IEnumerator WaterWithDelay(float delay)
