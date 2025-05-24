@@ -20,13 +20,9 @@ public class MattockController : Sounds
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0))
         {
-            Item selectedItem = InventoryController.Instance?.GetSelectedItem();
-            if (selectedItem != null && selectedItem.id == mattockItemId)
-            {
-                TryMattockSoil();
-            }
+            TryMattockSoil();
         }
     }
 

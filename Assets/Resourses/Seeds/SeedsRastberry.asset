@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: SeedsRastberry
+  m_EditorClassIdentifier: Assembly-CSharp::Seed
+  cropType: 0
+  isSeed: 1
+  icon: {fileID: -263092375, guid: 4a90f5883805ed74e80473f50bc71c84, type: 3}
+  maxStack: 32
+  position: {x: 0, y: 0, z: 0}
+  timeRemaining: 0
+  timerIsRunning: 0
+  currentGrowthStage: 0
+  growthStages:
+  - {fileID: 11400000, guid: 7037197c6eec6504e836898b5069d34c, type: 2}
+  - {fileID: 11400000, guid: 8c0f1771f9fb01048a431a0acf6119bb, type: 2}
+  - {fileID: 11400000, guid: df0bf061cae91eb42815c0cfc81d6f44, type: 2}
+  harvestItem:
+    id: 10
+    name: rastberry
+    img: {fileID: -123065442, guid: 4a90f5883805ed74e80473f50bc71c84, type: 3}
+    maxStack: 16
+    type: 1
+    cropType: 4
+  harvestYield: 1
+  growthTime: 120
+  waterRequirement: 1

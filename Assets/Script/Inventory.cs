@@ -2,9 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
-using UnityEditor.Rendering;
-using Unity.VisualScripting;
-using JetBrains.Annotations;
 
 public class Inventory : MonoBehaviour
 {
