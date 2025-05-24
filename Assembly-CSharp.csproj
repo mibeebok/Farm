@@ -84,6 +84,7 @@
     <Compile Include="Assets\Script\WindowExitController.cs" />
     <Compile Include="Assets\Script\SaveSystem.cs" />
     <Compile Include="Assets\Script\ScreenPositionLock.cs" />
+    <Compile Include="Assets\Script\Plants\CropType.cs" />
     <Compile Include="Assets\Script\PauseButtonPosition.cs" />
     <Compile Include="Assets\Script\WaterBounds.cs" />
     <Compile Include="Assets\Script\MattockController.cs" />
@@ -94,11 +95,12 @@
     <Compile Include="Assets\Script\GoatBehavior.cs" />
     <Compile Include="Assets\Script\Plants\CropsReadController.cs" />
     <Compile Include="Assets\Script\Parametrs\SleepController.cs" />
-    <Compile Include="Assets\Script\Plants\ScriptableObject.cs" />
+    <Compile Include="Assets\Script\ItemExtensions.cs" />
     <Compile Include="Assets\Script\PlayerVisual.cs" />
     <Compile Include="Assets\Script\DataBase.cs" />
     <Compile Include="Assets\Script\Plants\Carrot.cs" />
     <Compile Include="Assets\Script\Plants\CropData.cs" />
+    <Compile Include="Assets\Script\ItemPickup.cs" />
     <Compile Include="Assets\Script\Plants\Potato.cs" />
     <Compile Include="Assets\Script\ExitController.cs" />
     <Compile Include="Assets\Script\SpritePlayer.cs" />
