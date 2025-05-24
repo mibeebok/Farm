@@ -16,12 +16,16 @@ public class WateringCanController : Sounds
 
     void Update()
     {
-        // Проверяем, выбран ли нужный слот и нажата ЛКМ
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) 
         {
-            TryWaterSoil();
+            Item selectedItem = InventoryController.Instance?.GetSelectedItem();
+            if (selectedItem != null && selectedItem.id == wateringCanItemId)
+            {
+                TryWaterSoil();
+            }
         }
     }
+    
 
     void TryWaterSoil()
     {

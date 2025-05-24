@@ -32,15 +32,49 @@ public class InventoryController : MonoBehaviour
     {
         Instance = this;
     }
-    public void AddItem(Item item, int quantity = 1)
+    public bool AddItem(Item item, int quantity = 1)
     {
-        // Реализация добавления предмета в инвентарь
-        // Например:
-        if (item != null)
+        if (item == null || quantity <= 0) return false;
+
+        // 1. Попробуем добать к существующему стеку
+        for (int i = 0; i < mainInventory.items.Count; i++)
         {
-            Debug.Log($"Added {quantity}x {item.name} to inventory");
-            // Здесь должна быть ваша логика добавления предмета
+            if (mainInventory.items[i].id == item.id && 
+                mainInventory.items[i].count < item.maxStack)
+            {
+                int canAdd = item.maxStack - mainInventory.items[i].count;
+                int addAmount = Mathf.Min(quantity, canAdd);
+                
+                mainInventory.items[i].count += addAmount;
+                quantity -= addAmount;
+                
+                if (quantity <= 0)
+                {
+                    UpdateSlotVisuals();
+                    return true;
+                }
+            }
         }
+
+        // 2. Добавляем в пустые слоты
+        for (int i = 0; i < mainInventory.items.Count; i++)
+        {
+            if (mainInventory.items[i].id == 0) // Пустой слот
+            {
+                mainInventory.items[i].id = item.id;
+                mainInventory.items[i].count = Mathf.Min(quantity, item.maxStack);
+                quantity -= mainInventory.items[i].count;
+                
+                if (quantity <= 0)
+                {
+                    UpdateSlotVisuals();
+                    return true;
+                }
+            }
+        }
+
+        Debug.LogWarning("Не хватает места в инвентаре!");
+        return false;
     }
 
     void Start()
@@ -64,6 +98,11 @@ public class InventoryController : MonoBehaviour
         HandlePlayerMovement();
         HandleInput();
         HandleDragAndDrop();
+        if (Input.GetMouseButtonDown(0) && !IsInventoryOpen())
+        {
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            HandleItemUse(mousePos);
+        }
     }
 
     void InitializeHotbar()
@@ -320,6 +359,63 @@ public class InventoryController : MonoBehaviour
             return database.GetItemById(mainInventory.items[slotIndex].id);
 
         return null;
+    }
+    public void TryUseSelectedItem(Vector2 worldPosition)
+    {
+        Item selectedItem = GetSelectedItem();
+        if (selectedItem == null) return;
+
+        // Проверяем, является ли предмет семенем
+        if (selectedItem.IsSeed())
+        {
+            CropsManager.Instance.TryPlantSeed(selectedItem, worldPosition);
+        }
+        // Другие проверки для инструментов и т.д.
+    }
+    public bool RemoveItem(Item item, int quantity = 1)
+    {
+        if (item == null || quantity <= 0) return false;
+        
+        for (int i = 0; i < mainInventory.items.Count; i++)
+        {
+            if (mainInventory.items[i].id == item.id)
+            {
+                int removeAmount = Mathf.Min(quantity, mainInventory.items[i].count);
+                mainInventory.items[i].count -= removeAmount;
+                
+                if (mainInventory.items[i].count <= 0)
+                {
+                    mainInventory.items[i].id = 0;
+                    mainInventory.items[i].count = 0;
+                }
+                
+                UpdateSlotVisuals();
+                mainInventory.UpdateInventory();
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    public void HandleItemUse(Vector2 worldPosition)
+    {
+        Item selectedItem = GetSelectedItem();
+        if (selectedItem == null) return;
+
+        if (selectedItem.IsSeed())
+        {
+            // Логика посадки
+            if (CropsManager.Instance.TryPlantSeed(selectedItem, worldPosition))
+            {
+                RemoveItem(selectedItem, 1);
+            }
+        }
+        else if (selectedItem.IsVegetable())
+        {
+            // Логика использования овоща (например, продажа или крафт)
+            Debug.Log($"Used vegetable: {selectedItem.name}");
+            // RemoveItem(selectedItem, 1); // Если расходуется
+        }
     }
     
 
