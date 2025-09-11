@@ -15,7 +15,11 @@ TagManager:
   - NPC
   - 
   - 
+<<<<<<< HEAD
   - Dialogue
+=======
+  - 
+>>>>>>> bcb5869 (fix: layers)
   - Inventar
   - Menu
   - 

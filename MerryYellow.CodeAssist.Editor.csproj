@@ -59,7 +59,7 @@
     <UnityVersion>6000.0.34f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\Andrey\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.1.2\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\Andrey\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.1.3\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.34f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.34f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.34f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
@@ -1213,18 +1213,18 @@
   </ItemGroup>
   <!--This section is added by Unity Code Assist-->
   <ItemGroup>
-    <Analyzer Include="C:\Users\Andrey\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.AnalyzersLite.dll" />
-    <Analyzer Include="C:\Users\Andrey\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.Common.dll" />
-    <Analyzer Include="C:\Users\Andrey\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.Completion.dll" />
-    <Analyzer Include="C:\Users\Andrey\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.CompletionInternals.dll" />
-    <Analyzer Include="C:\Users\Andrey\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.Logger.dll" />
-    <Analyzer Include="C:\Users\Andrey\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.MQTTnet.dll" />
-    <Analyzer Include="C:\Users\Andrey\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.MQTTnet.Extensions.ManagedClient.dll" />
-    <Analyzer Include="C:\Users\Andrey\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.Newtonsoft.Json.dll" />
-    <Analyzer Include="C:\Users\Andrey\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.ProjectData.dll" />
-    <Analyzer Include="C:\Users\Andrey\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.RoslynAnalyzerManager.dll" />
-    <Analyzer Include="C:\Users\Andrey\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.Synchronizer.dll" />
-    <Analyzer Include="C:\Users\Andrey\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.SynchronizerModel.dll" />
-    <Analyzer Include="C:\Users\Andrey\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.VSIXLibrary.dll" />
+    <Analyzer Include="C:\Users\Andrey\FarmMain\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.AnalyzersLite.dll" />
+    <Analyzer Include="C:\Users\Andrey\FarmMain\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.Common.dll" />
+    <Analyzer Include="C:\Users\Andrey\FarmMain\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.Completion.dll" />
+    <Analyzer Include="C:\Users\Andrey\FarmMain\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.CompletionInternals.dll" />
+    <Analyzer Include="C:\Users\Andrey\FarmMain\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.Logger.dll" />
+    <Analyzer Include="C:\Users\Andrey\FarmMain\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.MQTTnet.dll" />
+    <Analyzer Include="C:\Users\Andrey\FarmMain\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.MQTTnet.Extensions.ManagedClient.dll" />
+    <Analyzer Include="C:\Users\Andrey\FarmMain\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.Newtonsoft.Json.dll" />
+    <Analyzer Include="C:\Users\Andrey\FarmMain\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.ProjectData.dll" />
+    <Analyzer Include="C:\Users\Andrey\FarmMain\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.RoslynAnalyzerManager.dll" />
+    <Analyzer Include="C:\Users\Andrey\FarmMain\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.Synchronizer.dll" />
+    <Analyzer Include="C:\Users\Andrey\FarmMain\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.SynchronizerModel.dll" />
+    <Analyzer Include="C:\Users\Andrey\FarmMain\Farm\Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.VSIXLibrary.dll" />
   </ItemGroup>
 </Project>
