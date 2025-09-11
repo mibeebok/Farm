@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 7226252}
   - component: {fileID: 7226251}
   - component: {fileID: 7226253}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slot_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 11322840}
   - component: {fileID: 11322839}
   - component: {fileID: 11322841}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slot_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1693,7 +1693,7 @@ GameObject:
   - component: {fileID: 133502645}
   - component: {fileID: 133502648}
   - component: {fileID: 133502650}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rabbit_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2778,7 +2778,7 @@ GameObject:
   - component: {fileID: 230827242}
   - component: {fileID: 230827244}
   - component: {fileID: 230827245}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: house
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2928,7 +2928,7 @@ GameObject:
   - component: {fileID: 234312152}
   - component: {fileID: 234312153}
   - component: {fileID: 234312151}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wolf_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4785,7 +4785,7 @@ GameObject:
   - component: {fileID: 439033434}
   - component: {fileID: 439033433}
   - component: {fileID: 439033435}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slot_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6883,7 +6883,7 @@ GameObject:
   - component: {fileID: 613057802}
   - component: {fileID: 613057805}
   - component: {fileID: 613057804}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bear_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9815,7 +9815,7 @@ GameObject:
   - component: {fileID: 906311477}
   - component: {fileID: 906311476}
   - component: {fileID: 906311478}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slot_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11470,7 +11470,7 @@ GameObject:
   - component: {fileID: 1078821070}
   - component: {fileID: 1078821069}
   - component: {fileID: 1078821071}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slot_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11604,7 +11604,7 @@ GameObject:
   - component: {fileID: 1082956750}
   - component: {fileID: 1082956749}
   - component: {fileID: 1082956751}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slot_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12969,7 +12969,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 9
   m_TargetDisplay: 0
 --- !u!224 &1157665274
 RectTransform:
@@ -19328,7 +19328,7 @@ GameObject:
   - component: {fileID: 1747943727}
   - component: {fileID: 1747943730}
   - component: {fileID: 1747943729}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: pause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21957,7 +21957,7 @@ GameObject:
   - component: {fileID: 1970771573}
   - component: {fileID: 1970771574}
   - component: {fileID: 1970771575}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22324,7 +22324,7 @@ GameObject:
   - component: {fileID: 1982248387}
   - component: {fileID: 1982248386}
   - component: {fileID: 1982248388}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slot_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22458,7 +22458,7 @@ GameObject:
   - component: {fileID: 1986367587}
   - component: {fileID: 1986367586}
   - component: {fileID: 1986367588}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slot_Dots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24077,7 +24077,7 @@ GameObject:
   - component: {fileID: 2128732977}
   - component: {fileID: 2128732980}
   - component: {fileID: 2128732979}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: fox_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
