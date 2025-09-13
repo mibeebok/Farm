@@ -1082,7 +1082,7 @@ GameObject:
   - component: {fileID: 85049842}
   - component: {fileID: 85049843}
   - component: {fileID: 85049844}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: inventar_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1216,7 +1216,7 @@ GameObject:
   - component: {fileID: 94391553}
   - component: {fileID: 94391555}
   - component: {fileID: 94391554}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DialogueBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3145,7 +3145,7 @@ GameObject:
   - component: {fileID: 250034217}
   - component: {fileID: 250034219}
   - component: {fileID: 250034218}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: NPCNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8771,7 +8771,7 @@ GameObject:
   - component: {fileID: 800874416}
   - component: {fileID: 800874418}
   - component: {fileID: 800874417}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DialogueBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12707,7 +12707,7 @@ GameObject:
   - component: {fileID: 1142447406}
   - component: {fileID: 1142447408}
   - component: {fileID: 1142447407}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DialogueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18484,7 +18484,7 @@ GameObject:
   - component: {fileID: 1667883898}
   - component: {fileID: 1667883900}
   - component: {fileID: 1667883899}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: NPCFaceImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
